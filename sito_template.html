@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Albi pretori SSR Sardegna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blu:#0E4D72; --blu-scuro:#0A3752; --inchiostro:#1D2A33; --grigio:#5E6B74; --linea:#D9E1E6;
+  --fondo:#F3F6F8; --carta:#FFFFFF; --ocra:#B7791F; --ocra-tenue:#FBEFD9; --verde:#1F7A6D; --verde-tenue:#DFF1EE;
+  --rosso:#A83232; --rosso-tenue:#FBE7E7;
+  --font:"Titillium Web", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --blu:#6FB3DB; --blu-scuro:#9CCBE6; --inchiostro:#E4EAEE; --grigio:#9AA8B2; --linea:#2C3A44;
+    --fondo:#131C22; --carta:#1A252D; --ocra:#E0A94A; --ocra-tenue:#3A2E17; --verde:#5CC2B2; --verde-tenue:#16332F;
+    --rosso:#E07A7A; --rosso-tenue:#3A1C1C;
+  }
+}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);font-family:var(--font);font-size:16px;line-height:1.5}
+a{color:var(--blu)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--ocra);outline-offset:2px}
+.contenitore{max-width:1180px;margin:0 auto;padding:0 20px}
+
+header{background:var(--blu-scuro);color:#fff;padding:28px 0 22px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) header{background:#0B2433}}
+header h1{margin:0;font-size:1.9rem;font-weight:700;letter-spacing:-.01em;line-height:1.15}
+header p{margin:6px 0 0;opacity:.85}
+
+/* Striscia delle aziende: l'elemento centrale della pagina, funge anche da filtro */
+.aziende{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1px;background:var(--linea);
+  border:1px solid var(--linea);border-radius:6px;overflow:hidden;margin:22px 0 18px}
+.az{all:unset;box-sizing:border-box;cursor:pointer;background:var(--carta);padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-height:78px}
+.az:hover{background:var(--fondo)}
+.az .nome{font-weight:600;font-size:.92rem;line-height:1.2}
+.az .num{font-size:1.6rem;font-weight:700;line-height:1;color:var(--blu);margin-top:auto}
+.az .num.zero{color:var(--grigio);opacity:.6}
+.az .sub{font-size:.78rem;color:var(--grigio)}
+.az[aria-pressed="true"]{background:var(--blu);color:#fff}
+.az[aria-pressed="true"] .num,.az[aria-pressed="true"] .sub{color:#fff;opacity:1}
+.az.guasto .sub{color:var(--rosso)}
+
+.filtri{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.filtri input[type=search]{flex:1 1 260px;min-width:0;padding:9px 12px;font:inherit;border:1px solid var(--linea);border-radius:4px;background:var(--carta);color:var(--inchiostro)}
+.filtri select{padding:9px 10px;font:inherit;border:1px solid var(--linea);border-radius:4px;background:var(--carta);color:var(--inchiostro);max-width:100%}
+.periodo{display:inline-flex;border:1px solid var(--linea);border-radius:4px;overflow:hidden}
+.periodo button[hidden]{display:none}
+.periodo button{font:inherit;border:0;background:var(--carta);color:var(--inchiostro);padding:8px 12px;cursor:pointer;border-right:1px solid var(--linea)}
+.periodo button:last-child{border-right:0}
+.periodo button[aria-pressed="true"]{background:var(--blu);color:#fff}
+label.evid{display:inline-flex;gap:6px;align-items:center;cursor:pointer;white-space:nowrap}
+
+.anomalie{background:var(--rosso-tenue);border-left:4px solid var(--rosso);padding:10px 14px;margin:0 0 16px;border-radius:0 4px 4px 0}
+.anomalie ul{margin:4px 0 0;padding-left:18px}
+
+.riepilogo{color:var(--grigio);margin:0 0 8px;font-size:.95rem}
+.elenco{list-style:none;margin:0;padding:0;background:var(--carta);border:1px solid var(--linea);border-radius:6px}
+.atto{display:grid;grid-template-columns:150px 1fr 170px;gap:16px;padding:14px 16px;border-top:1px solid var(--linea)}
+.atto:first-child{border-top:0}
+.atto.evidenza{box-shadow:inset 4px 0 0 var(--ocra)}
+.meta-sx{font-size:.85rem;color:var(--grigio);line-height:1.35}
+.meta-sx strong{display:block;color:var(--inchiostro);font-size:.9rem}
+.titolo{font-weight:600;text-decoration:none}
+.titolo:hover{text-decoration:underline}
+.oggetto{margin:3px 0 0;max-width:75ch}
+.chip{display:inline-block;font-size:.78rem;padding:1px 8px;border-radius:10px;margin:6px 6px 0 0}
+.chip.k{background:var(--ocra-tenue);color:var(--ocra);font-weight:600}
+.chip.nuovo{background:var(--verde-tenue);color:var(--verde);font-weight:600}
+.chip.scaduto{background:var(--fondo);color:var(--grigio)}
+.meta-dx{font-size:.85rem;color:var(--grigio);text-align:right}
+.vuoto{padding:40px 16px;text-align:center;color:var(--grigio)}
+.altri[hidden]{display:none}
+.altri{display:block;margin:14px auto 30px;font:inherit;padding:9px 18px;border:1px solid var(--blu);color:var(--blu);background:transparent;border-radius:4px;cursor:pointer}
+footer{color:var(--grigio);font-size:.85rem;padding:10px 0 40px}
+
+@media (max-width:760px){
+  header h1{font-size:1.5rem}
+  .atto{grid-template-columns:1fr;gap:4px}
+  .meta-dx{text-align:left}
+  .meta-sx strong{display:inline;margin-right:6px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="contenitore">
+    <h1>Albi pretori delle aziende del SSR Sardegna</h1>
+    <p id="aggiornato"></p>
+  </div>
+</header>
+
+<main class="contenitore">
+  <div class="aziende" id="aziende" role="group" aria-label="Filtra per azienda"></div>
+  <div id="anomalie"></div>
+
+  <div class="filtri">
+    <input type="search" id="cerca" placeholder="Cerca nell'oggetto o nel titolo (es. fabbisogno, Casa della Comunità)" aria-label="Cerca">
+    <select id="sezione" aria-label="Tipologia di atto"><option value="">Tutte le tipologie</option></select>
+    <div class="periodo" role="group" aria-label="Periodo">
+      <button type="button" data-p="visita" id="btnVisita" hidden>Dall'ultima visita</button>
+      <button type="button" data-p="oggi">Oggi</button>
+      <button type="button" data-p="7">Ultimi 7 giorni</button>
+      <button type="button" data-p="pub" aria-pressed="true">In pubblicazione</button>
+      <button type="button" data-p="tutti">Archivio</button>
+    </div>
+    <label class="evid"><input type="checkbox" id="soloEvid"> Solo in evidenza</label>
+  </div>
+
+  <p class="riepilogo" id="riepilogo" aria-live="polite"></p>
+  <ul class="elenco" id="elenco"></ul>
+  <button type="button" class="altri" id="altri" hidden>Mostra altri 100</button>
+</main>
+
+<footer class="contenitore">
+  Dati estratti automaticamente dagli albi pretori online delle aziende. Fa fede esclusivamente la pubblicazione sul sito dell'azienda.
+</footer>
+
+<script>
+const DATI = /*__DATI__*/null ?? {"generato":"","ts":"","oggi":"","aziende":[],"anomalie":[],"atti":[]};
+
+// "Nuovi dalla tua ultima visita": il browser ricorda quale aggiornamento hai visto l'ultima volta.
+// Il riferimento cambia solo quando arriva un aggiornamento nuovo, così ricaricare la pagina non fa perdere le novità.
+function leggi(k){ try { return localStorage.getItem(k) || ""; } catch(e){ return ""; } }
+function scrivi(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+let visitaPrecedente = leggi("albi_precedente");
+if (DATI.ts && leggi("albi_ultimo") !== DATI.ts){
+  visitaPrecedente = leggi("albi_ultimo");
+  scrivi("albi_precedente", visitaPrecedente);
+  scrivi("albi_ultimo", DATI.ts);
+}
+
+const stato = {azienda:"", sezione:"", periodo:"pub", testo:"", evid:false, limite:100};
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = iso => {
+  if (!iso) return "";
+  const [d, h] = iso.split("T");
+  return d.split("-").reverse().join("/") + (h ? ` alle ${h}` : "");
+};
+const giorniFa = iso => Math.round((new Date(DATI.oggi) - new Date(iso.slice(0, 10))) / 864e5);
+const oggi = a => !a.b && a.r.slice(0, 10) === DATI.oggi;
+const dallaVisita = a => !a.b && !!visitaPrecedente && a.r > visitaPrecedente;
+const nuovo = a => visitaPrecedente ? dallaVisita(a) : oggi(a);
+
+function nelPeriodo(a){
+  if (stato.periodo === "visita") return dallaVisita(a);
+  if (stato.periodo === "oggi") return oggi(a);
+  if (stato.periodo === "7") return !a.b && giorniFa(a.r) < 7;
+  if (stato.periodo === "pub") return a.p;
+  return true;
+}
+
+function filtrati(ignoraAzienda){
+  const t = stato.testo.toLowerCase();
+  return DATI.atti.filter(a =>
+    (ignoraAzienda || !stato.azienda || a.a === stato.azienda) &&
+    (!stato.sezione || a.s === stato.sezione) &&
+    (!stato.evid || a.k.length) &&
+    nelPeriodo(a) &&
+    (!t || (a.t + " " + a.o).toLowerCase().includes(t)));
+}
+
+function disegnaAziende(){
+  const base = filtrati(true);
+  const guasti = new Set(DATI.anomalie.map(x => x.azienda));
+  $("aziende").innerHTML = DATI.aziende.map(n => {
+    const lista = base.filter(a => a.a === n);
+    const nuovi = lista.filter(nuovo).length;
+    const quando = visitaPrecedente ? "dall'ultima visita" : "oggi";
+    const sub = guasti.has(n) ? "non raggiungibile" : (nuovi ? `${nuovi} ${nuovi === 1 ? "nuovo" : "nuovi"} ${quando}` : `niente di nuovo ${quando}`);
+    return `<button type="button" class="az${guasti.has(n) ? " guasto" : ""}" data-az="${esc(n)}" aria-pressed="${stato.azienda === n}">
+      <span class="nome">${esc(n)}</span>
+      <span class="num${lista.length ? "" : " zero"}">${lista.length}</span>
+      <span class="sub">${sub}</span></button>`;
+  }).join("");
+}
+
+function disegnaElenco(){
+  const lista = filtrati(false).sort((x, y) => (y.r || "").localeCompare(x.r || "") || (y.k.length - x.k.length));
+  $("riepilogo").textContent = lista.length
+    ? `${lista.length} atti${stato.azienda ? " di " + stato.azienda : ""}, dal più recente.`
+    : "";
+  if (!lista.length){
+    $("elenco").innerHTML = `<li class="vuoto">Nessun atto corrisponde ai filtri. Prova ad allargare il periodo o a togliere la ricerca.</li>`;
+    $("altri").hidden = true; return;
+  }
+  $("elenco").innerHTML = lista.slice(0, stato.limite).map(a => `
+    <li class="atto${a.k.length ? " evidenza" : ""}">
+      <div class="meta-sx"><strong>${esc(a.a)}</strong>${esc(a.s)}</div>
+      <div>
+        <a class="titolo" href="${esc(a.u)}" target="_blank" rel="noopener">${esc(a.t)}</a>
+        ${a.o ? `<p class="oggetto">${esc(a.o)}</p>` : ""}
+        ${nuovo(a) ? `<span class="chip nuovo">nuovo</span>` : ""}
+        ${a.p ? "" : `<span class="chip scaduto">pubblicazione conclusa</span>`}
+        ${a.k.map(k => `<span class="chip k">${esc(k)}</span>`).join("")}
+      </div>
+      <div class="meta-dx">${a.d ? `In pubblicazione<br>${esc(a.d)} – ${esc(a.f)}` : ""}${a.m ? `<br>${esc(a.m)}` : ""}<br>Rilevato il ${fmt(a.r)}</div>
+    </li>`).join("");
+  $("altri").hidden = lista.length <= stato.limite;
+}
+
+function aggiorna(){ disegnaAziende(); disegnaElenco(); }
+
+// Avvio
+$("aggiornato").textContent = DATI.generato
+  ? `Aggiornato il ${DATI.generato}. Aggiornamenti automatici ogni giorno alle 8 e alle 15 circa.`
+  : "Nessun dato ancora disponibile: il primo aggiornamento non è ancora stato eseguito.";
+const sezioni = [...new Set(DATI.atti.map(a => a.s))].sort((x, y) => x.localeCompare(y, "it"));
+$("sezione").insertAdjacentHTML("beforeend", sezioni.map(s => `<option>${esc(s)}</option>`).join(""));
+if (DATI.anomalie.length){
+  $("anomalie").innerHTML = `<div class="anomalie"><strong>Aziende non lette nell'ultimo aggiornamento</strong>
+    <ul>${DATI.anomalie.map(x => `<li>${esc(x.azienda)}: ${esc(x.errore)}</li>`).join("")}</ul></div>`;
+}
+const nDallaVisita = DATI.atti.filter(dallaVisita).length;
+if (visitaPrecedente){
+  $("btnVisita").hidden = false;
+  $("btnVisita").textContent = `Dall'ultima visita (${nDallaVisita})`;
+}
+if (nDallaVisita) stato.periodo = "visita";
+else if (!visitaPrecedente && DATI.atti.some(oggi)) stato.periodo = "oggi";
+document.querySelectorAll(".periodo button").forEach(b => b.setAttribute("aria-pressed", b.dataset.p === stato.periodo));
+
+$("aziende").addEventListener("click", e => {
+  const b = e.target.closest(".az"); if (!b) return;
+  stato.azienda = stato.azienda === b.dataset.az ? "" : b.dataset.az; stato.limite = 100; aggiorna();
+});
+document.querySelector(".periodo").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  stato.periodo = b.dataset.p; stato.limite = 100;
+  document.querySelectorAll(".periodo button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  aggiorna();
+});
+$("cerca").addEventListener("input", e => { stato.testo = e.target.value.trim(); stato.limite = 100; aggiorna(); });
+$("sezione").addEventListener("change", e => { stato.sezione = e.target.value; stato.limite = 100; aggiorna(); });
+$("soloEvid").addEventListener("change", e => { stato.evid = e.target.checked; stato.limite = 100; aggiorna(); });
+$("altri").addEventListener("click", () => { stato.limite += 100; disegnaElenco(); });
+aggiorna();
+</script>
+</body>
+</html>

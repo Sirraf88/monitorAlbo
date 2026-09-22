@@ -1,0 +1,84 @@
+{
+  "aziende": [
+    {
+      "nome": "ASL 1 Sassari",
+      "albo": "https://www.asl1sassari.it/albo-pretorio/"
+    },
+    {
+      "nome": "ASL 2 Gallura",
+      "albo": "https://www.aslgallura.it/albo-pretorio/"
+    },
+    {
+      "nome": "ASL 3 Nuoro",
+      "albo": "https://www.asl3nuoro.it/albo-pretorio/"
+    },
+    {
+      "nome": "ASL 4 Ogliastra",
+      "albo": "https://www.aslogliastra.it/albo-pretorio/"
+    },
+    {
+      "nome": "ASL 5 Oristano",
+      "albo": "https://www.asl5oristano.it/albo-pretorio/"
+    },
+    {
+      "nome": "ASL 6 Medio Campidano",
+      "albo": "https://www.aslmediocampidano.it/albo-pretorio/"
+    },
+    {
+      "nome": "ASL 7 Sulcis Iglesiente",
+      "albo": "https://www.aslsulcis.it/albo-pretorio/"
+    },
+    {
+      "nome": "ASL 8 Cagliari",
+      "albo": "https://www.asl8cagliari.it/albo-pretorio/"
+    },
+    {
+      "nome": "ARNAS G. Brotzu",
+      "albo": "https://www.arnasbrotzu.it/albo-pretorio/"
+    },
+    {
+      "nome": "AOU Sassari",
+      "albo": "https://www.aousassari.it/albo-pretorio/"
+    },
+    {
+      "nome": "AOU Cagliari",
+      "albo": "https://albotelematico.aoucagliari.it/",
+      "piattaforma": "albotelematico"
+    },
+    {
+      "nome": "AREUS",
+      "albo": "https://www.areus.sardegna.it/albo-pretorio/"
+    },
+    {
+      "nome": "ARES Sardegna",
+      "albo": "https://www.aressardegna.it/albo-pretorio/"
+    }
+  ],
+  "parole_chiave": [
+    "fabbisogn*",
+    "PTFP",
+    "piano triennale",
+    "dotazione organica",
+    "assunzion*",
+    "stabilizzazion*",
+    "mobilità",
+    "concorso",
+    "DM 77",
+    "casa della comunità",
+    "ospedale di comunità",
+    "COT",
+    "PNRR",
+    "ALPI",
+    "libera professione",
+    "bilancio",
+    "atto aziendale",
+    "PIAO",
+    "performance",
+    "Direttore di Struttura Complessa"
+  ],
+  "traccia_allegati_sezioni": true,
+  "pausa_secondi": 1.5,
+  "max_pagine_per_sezione": 30,
+  "max_profondita_sezioni": 3,
+  "giorni_conservazione_stato": 120
+}
