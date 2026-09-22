@@ -43,7 +43,8 @@
     {
       "nome": "AOU Cagliari",
       "albo": "https://albotelematico.aoucagliari.it/",
-      "piattaforma": "albotelematico"
+      "piattaforma": "albotelematico",
+      "usa_browser": true
     },
     {
       "nome": "AREUS",

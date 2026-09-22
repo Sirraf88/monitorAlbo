@@ -184,7 +184,11 @@ function disegnaAziende(){
 }
 
 function disegnaElenco(){
-  const lista = filtrati(false).sort((x, y) => (y.r || "").localeCompare(x.r || "") || (y.k.length - x.k.length));
+  // Ordine: prima i più recentemente rilevati, poi per data di inizio pubblicazione (più recenti in alto)
+  const lista = filtrati(false).sort((x, y) =>
+    (y.b ? "" : y.r || "").localeCompare(x.b ? "" : x.r || "") ||
+    (y.i || "").localeCompare(x.i || "") ||
+    (y.k.length - x.k.length));
   $("riepilogo").textContent = lista.length
     ? `${lista.length} atti${stato.azienda ? " di " + stato.azienda : ""}, dal più recente.`
     : "";
@@ -202,7 +206,7 @@ function disegnaElenco(){
         ${a.p ? "" : `<span class="chip scaduto">pubblicazione conclusa</span>`}
         ${a.k.map(k => `<span class="chip k">${esc(k)}</span>`).join("")}
       </div>
-      <div class="meta-dx">${a.d ? `In pubblicazione<br>${esc(a.d)} – ${esc(a.f)}` : ""}${a.m ? `<br>${esc(a.m)}` : ""}<br>Rilevato il ${fmt(a.r)}</div>
+      <div class="meta-dx">${a.d ? `In pubblicazione<br>${esc(a.d)} – ${esc(a.f)}` : ""}${a.m ? `<br>${esc(a.m)}` : ""}<br>${a.b ? "Già presente al primo avvio" : `Rilevato il ${fmt(a.r)}`}</div>
     </li>`).join("");
   $("altri").hidden = lista.length <= stato.limite;
 }

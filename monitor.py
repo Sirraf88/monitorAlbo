@@ -70,18 +70,28 @@ def log(msg):
     print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
-def scarica_con_browser(url):
+def scarica_con_browser(url, attendi=None):
     """Fallback per i portali che rifiutano le richieste non-browser (es. errore 428):
-    apre la pagina in Chromium headless (Playwright) e ne restituisce l'HTML."""
+    apre la pagina in Chromium headless (Playwright) e ne restituisce l'HTML.
+    Con `attendi` (selettore CSS) aspetta che il contenuto reale compaia, superando
+    le eventuali pagine di verifica anti-bot che si risolvono da sole via JavaScript."""
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
         raise RuntimeError("accesso bloccato dal portale (428/403) e Playwright non installato")
     if getattr(_locale, "pagina", None) is None:
         _locale.pw = sync_playwright().start()
-        _locale.browser = _locale.pw.chromium.launch()
-        _locale.pagina = _locale.browser.new_page(locale="it-IT")
-    _locale.pagina.goto(url, wait_until="domcontentloaded", timeout=30000)
+        _locale.browser = _locale.pw.chromium.launch(args=["--disable-blink-features=AutomationControlled"])
+        contesto = _locale.browser.new_context(
+            locale="it-IT", timezone_id="Europe/Rome", viewport={"width": 1366, "height": 900},
+            user_agent=session.headers["User-Agent"])
+        _locale.pagina = contesto.new_page()
+    _locale.pagina.goto(url, wait_until="domcontentloaded", timeout=45000)
+    if attendi:
+        try:
+            _locale.pagina.wait_for_selector(attendi, timeout=45000)
+        except Exception:
+            pass   # si restituisce comunque la pagina: la diagnostica la registra nel log
     time.sleep(PAUSA)
     return BeautifulSoup(_locale.pagina.content(), "html.parser")
 
@@ -94,12 +104,12 @@ def chiudi_browser():
 
 
 # ---------------------------------------------------------------- rete e parsing
-def scarica(url):
+def scarica(url, attendi=None):
     """GET con 3 tentativi; None se la pagina non esiste."""
     if SCADENZA[0] and time.time() > SCADENZA[0]:
         raise TempoScaduto()
     if getattr(_locale, "solo_browser", False):
-        return scarica_con_browser(url)
+        return scarica_con_browser(url, attendi)
     for tentativo in range(3):
         try:
             r = session.get(url, timeout=30)
@@ -107,7 +117,7 @@ def scarica(url):
                 return None
             if r.status_code in (403, 428):
                 _locale.solo_browser = True   # da qui in poi, per questo sito, solo browser
-                return scarica_con_browser(url)
+                return scarica_con_browser(url, attendi)
             r.raise_for_status()
             time.sleep(PAUSA)
             return BeautifulSoup(r.content, "html.parser")  # charset letto dalla pagina
@@ -221,6 +231,8 @@ def scansiona_azienda(azienda, visti, primo_avvio):
             if not trovati or (not primo_avvio and all(x["url"] in visti for x in trovati)):
                 break
             pagina = pagina_successiva(soup, pagina)
+    if not atti:
+        diagnostica(azienda["nome"], scarica(radice))
     return list(atti.values())
 
 
@@ -250,15 +262,33 @@ def estrai_atti_albotelematico(soup, url_pagina):
     return atti
 
 
+def diagnostica(nome, soup):
+    """Scrive nel log cosa ha restituito il portale quando non si trovano atti."""
+    titolo = soup.title.get_text(strip=True) if soup and soup.title else "(nessun titolo)"
+    testo = " ".join(soup.get_text(" ", strip=True).split())[:300] if soup else ""
+    log(f"{nome}: DIAGNOSTICA pagina senza atti. Titolo: {titolo!r}. Testo: {testo!r}")
+
+
 def scansiona_albotelematico(azienda, visti, primo_avvio):
     base = azienda["albo"].split("?")[0]
     atti, n = {}, 1
+    if azienda.get("usa_browser"):
+        _locale.solo_browser = True
     while n <= azienda.get("max_pagine", 60):
         url = f"{base}?p={n}"
-        soup = scarica(url)
+        soup = scarica(url, attendi="div.card-icona")
         if soup is None:
             break
         trovati = estrai_atti_albotelematico(soup, url)
+        if not trovati and n == 1:
+            diagnostica(azienda["nome"], soup)
+            if not getattr(_locale, "solo_browser", False):
+                # risposta "vuota" senza errore: si riprova una volta con il browser
+                _locale.solo_browser = True
+                soup = scarica(url, attendi="div.card-icona")
+                trovati = estrai_atti_albotelematico(soup, url) if soup else []
+                if not trovati:
+                    diagnostica(azienda["nome"] + " (browser)", soup)
         for x in trovati:
             atti.setdefault(x["url"], x)
         # elenco ordinato per inizio pubblicazione decrescente
@@ -303,6 +333,15 @@ def genera_sito(correnti, errori, baseline_per_azienda, visti, url_nuovi, moment
         visti_url.add(x["url"])
     guaste = {e.split(": ", 1)[0] for e in errori}
 
+    def data_iso(s):
+        m = re.match(r"(\d{2})[./-](\d{2})[./-](\d{4})", s or "")
+        return f"{m[3]}-{m[2]}-{m[1]}" if m else ""
+
+    for a in atti:   # atti letti ora: "in pubblicazione" se la fine pubblicazione non è passata
+        fine = data_iso(a["f"])
+        a["p"] = not fine or fine >= oggi
+        a["i"] = data_iso(a["d"])   # inizio pubblicazione, per l'ordinamento
+
     def ancora_in_pubblicazione(row):
         # per le aziende non lette in questa esecuzione si usa la data di fine pubblicazione
         if row["azienda"] not in guaste:
@@ -320,7 +359,7 @@ def genera_sito(correnti, errori, baseline_per_azienda, visti, url_nuovi, moment
                 atti.append({"a": row["azienda"], "s": row["sezione"], "t": row["titolo"], "o": row["oggetto"],
                              "d": row["dal"], "f": row["al"], "m": row["ambito"], "u": row["url"],
                              "r": row["rilevato_il"], "k": [k for k in row["parole"].split(", ") if k],
-                             "p": ancora_in_pubblicazione(row), "b": False})
+                             "p": ancora_in_pubblicazione(row), "b": False, "i": data_iso(row["dal"])})
     dati = {"generato": momento.strftime("%d/%m/%Y alle %H:%M"), "ts": momento.strftime("%Y-%m-%dT%H:%M"),
             "oggi": oggi,
             "aziende": [a["nome"] for a in CONFIG["aziende"] if a.get("attivo", True)],
