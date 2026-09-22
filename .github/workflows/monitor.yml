@@ -2,9 +2,14 @@ name: Monitor albi pretori SSR
 
 on:
   schedule:
-    - cron: "0 6 * * *"    # 06:00 UTC = 8:00 ora legale / 7:00 ora solare
-    - cron: "0 13 * * *"   # 13:00 UTC = 15:00 ora legale / 14:00 ora solare
-  workflow_dispatch:        # avvio manuale dal tab Actions
+    # Aggiornamenti alle 15:00 e alle 20:00 ora italiana, tutto l'anno.
+    # GitHub ragiona in UTC: si programmano entrambe le varianti (ora legale e ora solare)
+    # e il job "controllo" lascia passare solo quella corretta per il periodo dell'anno.
+    - cron: "0 13 * * *"   # 15:00 con ora legale
+    - cron: "0 14 * * *"   # 15:00 con ora solare
+    - cron: "0 18 * * *"   # 20:00 con ora legale
+    - cron: "0 19 * * *"   # 20:00 con ora solare
+  workflow_dispatch:        # avvio manuale dal tab Actions (sempre eseguito)
 
 permissions:
   contents: write
@@ -16,7 +21,27 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  controllo:
+    runs-on: ubuntu-latest
+    outputs:
+      esegui: ${{ steps.orario.outputs.esegui }}
+    steps:
+      - id: orario
+        run: |
+          OFFSET=$(TZ=Europe/Rome date +%z)
+          ESEGUI=true
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            case "${{ github.event.schedule }}" in
+              "0 13 * * *"|"0 18 * * *") [ "$OFFSET" = "+0200" ] || ESEGUI=false ;;
+              "0 14 * * *"|"0 19 * * *") [ "$OFFSET" = "+0100" ] || ESEGUI=false ;;
+            esac
+          fi
+          echo "Fuso Europe/Rome: $OFFSET - esecuzione: $ESEGUI"
+          echo "esegui=$ESEGUI" >> "$GITHUB_OUTPUT"
+
   monitor:
+    needs: controllo
+    if: needs.controllo.outputs.esegui == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 110
     environment:
