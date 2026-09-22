@@ -264,26 +264,68 @@ RE_SCAD = re.compile(r"Data e ora di scadenza\s*(\d{2}[./-]\d{2}[./-]\d{4})", re
 TITOLI = ["h2", "h3", "h4", "h5", "h6"]
 
 
-def leggi_dettaglio(url):
-    """Oggetto e date dalla pagina del singolo atto (usata quando l'elenco non le riporta)."""
-    soup = scarica(url)
-    if soup is None:
-        return {}
-    area = area_principale(soup)
-    oggetto = ""
-    intestazione = area.find(lambda t: t.name in TITOLI and t.get_text(strip=True).lower() == "oggetto")
+VERSIONE_DETTAGLIO = 2   # se cambia, gli atti rimasti senza oggetto vengono ritentati
+SEL_OGGETTO = ('[id*="oggetto"], h2:has-text("Oggetto"), h3:has-text("Oggetto"), '
+               'h4:has-text("Oggetto"), h5:has-text("Oggetto")')
+RE_OGGETTO_TESTO = re.compile(r"\bOggetto\s+(.{15,}?)\s+(?:Pubblicazione|Documenti|Ulteriori informazioni)\b", re.S)
+
+
+def estrai_oggetto(soup):
+    """Cerca l'oggetto dell'atto nella pagina di dettaglio con tre metodi, dal più preciso al più tollerante."""
+    # 1. sezione con identificativo "…oggetto…" (es. <section id="articolo-oggetto">)
+    for el in soup.find_all(id=re.compile("oggetto", re.I)):
+        t = " ".join(el.get_text(" ", strip=True).split())
+        t = re.sub(r"^Oggetto\s*", "", t, flags=re.I)
+        if len(t) > 15:
+            return t
+    # 2. titolo "Oggetto" seguito dal testo
+    intestazione = soup.find(lambda t: t.name in TITOLI and t.get_text(strip=True).lower() == "oggetto")
     if intestazione:
         parti = []
         for el in intestazione.find_next_siblings():
             if el.name in TITOLI:
                 break
             parti.append(el.get_text(" ", strip=True))
-        if not any(parti) and intestazione.parent:   # oggetto nello stesso contenitore del titolo
+        if not any(parti) and intestazione.parent:
             parti = [intestazione.parent.get_text(" ", strip=True)[len(intestazione.get_text(strip=True)):]]
-        oggetto = " ".join(" ".join(parti).split())
-    testo = " ".join(area.get_text(" ", strip=True).split())
+        t = " ".join(" ".join(parti).split())
+        if len(t) > 15:
+            return t
+    # 3. testo della pagina compreso tra "Oggetto" e la sezione successiva (si sceglie il tratto più lungo,
+    #    per scartare l'indice della pagina "Stato Oggetto Pubblicazione …")
+    testo = " ".join(area_principale(soup).get_text(" ", strip=True).split())
+    trovati = RE_OGGETTO_TESTO.findall(testo)
+    return max(trovati, key=len) if trovati else ""
+
+
+def analizza_dettaglio(soup):
+    testo = " ".join(area_principale(soup).get_text(" ", strip=True).split())
     pub, scad = RE_PUB.search(testo), RE_SCAD.search(testo)
-    return {"oggetto": oggetto, "dal": pub.group(1) if pub else "", "al": scad.group(1) if scad else ""}
+    return {"oggetto": estrai_oggetto(soup), "dal": pub.group(1) if pub else "",
+            "al": scad.group(1) if scad else "", "ver": VERSIONE_DETTAGLIO}
+
+
+def leggi_dettaglio(url, nome_azienda=""):
+    """Oggetto e date dalla pagina del singolo atto (usata quando l'elenco non le riporta).
+    Se la pagina scaricata direttamente non contiene l'oggetto (es. contenuto generato via JavaScript),
+    si usa il browser; dopo il primo successo così, per quell'azienda si passa subito al browser."""
+    if not getattr(_locale, "dettaglio_browser", False):
+        soup = scarica(url)
+        if soup is None:
+            return {"ver": VERSIONE_DETTAGLIO}
+        risultato = analizza_dettaglio(soup)
+        if risultato["oggetto"]:
+            return risultato
+    soup = scarica_con_browser(url, SEL_OGGETTO, 12000)
+    risultato = analizza_dettaglio(soup)
+    if risultato["oggetto"]:
+        if not getattr(_locale, "dettaglio_browser", False):
+            _locale.dettaglio_browser = True
+            log(f"{nome_azienda}: le pagine di dettaglio si leggono solo con il browser")
+    elif not getattr(_locale, "diagnostica_dettaglio", False):
+        _locale.diagnostica_dettaglio = True
+        diagnostica(f"{nome_azienda} [dettaglio {url}]", soup)
+    return risultato
 
 
 def data_atto(x):
@@ -295,18 +337,22 @@ def data_atto(x):
 def arricchisci(azienda, atti, cache):
     """Completa gli atti privi di oggetto leggendo la pagina di dettaglio (una sola volta per atto).
     Si parte dai più recenti; il limite per esecuzione evita di sovraccaricare i siti."""
+    def da_rileggere(u):
+        c = cache.get(u)
+        return c is None or (not c.get("oggetto") and c.get("ver", 0) < VERSIONE_DETTAGLIO)
+
     da_fare = sorted((x for x in atti if not x["oggetto"] and "/ap/" in x["url"]), key=data_atto, reverse=True)
     fatti, vuoti, esempio = 0, 0, ""
     for x in da_fare:
-        if x["url"] not in cache:
+        if da_rileggere(x["url"]):
             if fatti >= CONFIG.get("max_dettagli_per_esecuzione", 400):
                 continue   # gli altri al prossimo aggiornamento
             try:
-                cache[x["url"]] = leggi_dettaglio(x["url"])
+                cache[x["url"]] = leggi_dettaglio(x["url"], azienda["nome"])
             except TempoScaduto:
                 raise
             except Exception as e:
-                cache[x["url"]] = {}
+                cache[x["url"]] = {"ver": VERSIONE_DETTAGLIO}
                 log(f"{azienda['nome']}: dettaglio non leggibile {x['url']} ({type(e).__name__})")
             fatti += 1
             if not cache[x["url"]].get("oggetto"):
@@ -316,7 +362,7 @@ def arricchisci(azienda, atti, cache):
         x["oggetto"] = d.get("oggetto") or x["oggetto"]
         x["dal"] = x["dal"] or d.get("dal", "")
         x["al"] = x["al"] or d.get("al", "")
-    restanti = sum(1 for x in da_fare if x["url"] not in cache)
+    restanti = sum(1 for x in da_fare if da_rileggere(x["url"]))
     if da_fare:
         log(f"{azienda['nome']}: atti senza oggetto nell'elenco {len(da_fare)}; completati ora {fatti - vuoti}; "
             f"senza oggetto anche nel dettaglio {vuoti}{' (es. ' + esempio + ')' if esempio else ''}; "
@@ -499,6 +545,8 @@ def main():
 
     def leggi_azienda(az):
         _locale.solo_browser = False
+        _locale.dettaglio_browser = False
+        _locale.diagnostica_dettaglio = False
         inizio = time.time()
         # lettura completa (senza fermarsi alle pagine già note) al primo avvio o senza registro
         completa = nuovo_registro or az["nome"] not in inizializzate
