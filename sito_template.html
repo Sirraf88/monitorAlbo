@@ -44,6 +44,8 @@ header p{margin:6px 0 0;opacity:.85}
 .az .num{font-size:1.6rem;font-weight:700;line-height:1;color:var(--blu);margin-top:auto}
 .az .num.zero{color:var(--grigio);opacity:.6}
 .az .sub{font-size:.78rem;color:var(--grigio)}
+.az.manuale{text-decoration:none;color:inherit}
+.az.manuale .sub{color:var(--blu)}
 .az[aria-pressed="true"]{background:var(--blu);color:#fff}
 .az[aria-pressed="true"] .num,.az[aria-pressed="true"] .sub{color:#fff;opacity:1}
 .az.guasto .sub{color:var(--rosso)}
@@ -171,7 +173,12 @@ function filtrati(ignoraAzienda){
 function disegnaAziende(){
   const base = filtrati(true);
   const guasti = new Set(DATI.anomalie.map(x => x.azienda));
+  const manuali = DATI.manuali || {};
   $("aziende").innerHTML = DATI.aziende.map(n => {
+    if (manuali[n]) return `<a class="az manuale" href="${esc(manuali[n])}" target="_blank" rel="noopener">
+      <span class="nome">${esc(n)}</span>
+      <span class="num zero">↗</span>
+      <span class="sub">consulta l'albo sul sito dell'azienda</span></a>`;
     const lista = base.filter(a => a.a === n);
     const nuovi = lista.filter(nuovo).length;
     const quando = visitaPrecedente ? "dall'ultima visita" : "oggi";

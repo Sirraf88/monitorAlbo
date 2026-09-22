@@ -363,6 +363,7 @@ def genera_sito(correnti, errori, baseline_per_azienda, visti, url_nuovi, moment
     dati = {"generato": momento.strftime("%d/%m/%Y alle %H:%M"), "ts": momento.strftime("%Y-%m-%dT%H:%M"),
             "oggi": oggi,
             "aziende": [a["nome"] for a in CONFIG["aziende"] if a.get("attivo", True)],
+            "manuali": {a["nome"]: a["albo"] for a in CONFIG["aziende"] if a.get("attivo", True) and a.get("manuale")},
             "anomalie": [{"azienda": e.split(": ", 1)[0], "errore": e.split(": ", 1)[-1][:160]} for e in errori],
             "atti": atti}
     js = json.dumps(dati, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
@@ -397,7 +398,8 @@ def main():
     oggi, ts = momento.date().isoformat(), momento.strftime("%Y-%m-%dT%H:%M")
     novita, errori, correnti = [], [], []
 
-    attive = [az for az in CONFIG["aziende"] if az.get("attivo", True)]
+    # le aziende "manuali" compaiono nel sito solo come collegamento diretto all'albo
+    attive = [az for az in CONFIG["aziende"] if az.get("attivo", True) and not az.get("manuale")]
     SCADENZA[0] = time.time() + CONFIG.get("tempo_massimo_minuti", 80) * 60
 
     def leggi_azienda(az):
