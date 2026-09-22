@@ -30,6 +30,7 @@ STATE_FILE = BASE_DIR / "seen.json"
 ARCHIVE_FILE = BASE_DIR / "archivio_atti.csv"
 SITO_TEMPLATE = BASE_DIR / "sito_template.html"
 SITO_DIR = BASE_DIR / "sito"
+REGISTRO_FILE = BASE_DIR / "registro_atti.json"   # tutti gli atti conosciuti, con i loro dati
 ROMA = ZoneInfo("Europe/Rome")
 
 
@@ -159,7 +160,10 @@ def estrai_atti(soup, url_pagina, radice):
         if urlparse(href).netloc != dominio or normalizza(href).startswith(radice):
             continue
         titolo_tag = a.find_parent("h5")
-        ul = titolo_tag.find_next_sibling("ul") if titolo_tag else None
+        # l'elenco dei dati deve essere l'elemento immediatamente successivo al titolo,
+        # altrimenti si rischia di attribuire all'atto i dati dell'atto seguente
+        succ = titolo_tag.find_next_sibling() if titolo_tag else None
+        ul = succ if succ is not None and succ.name == "ul" else None
         voci = [li.get_text(" ", strip=True) for li in ul.find_all("li", recursive=False)] if ul else []
         testo = " ".join(voci)
         oggetto = next((v for v in voci if not re.match(r"(in pubblicazione|ambito|visualizza)", v, re.I)), "")
@@ -207,7 +211,7 @@ def scansiona_azienda(azienda, visti, primo_avvio):
         if url in visitate:
             continue
         visitate.add(url)
-        log(f"{azienda['nome']}: sezione {nome_sezione}")
+        prima = len(atti)
         pagina, n = url, 0
         while pagina and n < MAX_PAGINE:
             soup = scarica(pagina)
@@ -231,9 +235,60 @@ def scansiona_azienda(azienda, visti, primo_avvio):
             if not trovati or (not primo_avvio and all(x["url"] in visti for x in trovati)):
                 break
             pagina = pagina_successiva(soup, pagina)
+        log(f"{azienda['nome']}: sezione {nome_sezione}: {len(atti) - prima} atti in {n} pagine")
     if not atti:
         diagnostica(azienda["nome"], scarica(radice))
     return list(atti.values())
+
+
+RE_PUB = re.compile(r"Data di pubblicazione\s*(\d{2}[./-]\d{2}[./-]\d{4})", re.I)
+RE_SCAD = re.compile(r"Data e ora di scadenza\s*(\d{2}[./-]\d{2}[./-]\d{4})", re.I)
+TITOLI = ["h2", "h3", "h4", "h5", "h6"]
+
+
+def leggi_dettaglio(url):
+    """Oggetto e date dalla pagina del singolo atto (usata quando l'elenco non le riporta)."""
+    soup = scarica(url)
+    if soup is None:
+        return {}
+    area = area_principale(soup)
+    oggetto = ""
+    intestazione = area.find(lambda t: t.name in TITOLI and t.get_text(strip=True).lower() == "oggetto")
+    if intestazione:
+        parti = []
+        for el in intestazione.find_next_siblings():
+            if el.name in TITOLI:
+                break
+            parti.append(el.get_text(" ", strip=True))
+        if not any(parti) and intestazione.parent:   # oggetto nello stesso contenitore del titolo
+            parti = [intestazione.parent.get_text(" ", strip=True)[len(intestazione.get_text(strip=True)):]]
+        oggetto = " ".join(" ".join(parti).split())
+    testo = " ".join(area.get_text(" ", strip=True).split())
+    pub, scad = RE_PUB.search(testo), RE_SCAD.search(testo)
+    return {"oggetto": oggetto, "dal": pub.group(1) if pub else "", "al": scad.group(1) if scad else ""}
+
+
+def arricchisci(azienda, atti, cache):
+    """Completa gli atti privi di oggetto leggendo la pagina di dettaglio (una sola volta per atto)."""
+    da_fare = [x for x in atti if not x["oggetto"] and "/ap/" in x["url"]]
+    fatti = 0
+    for x in da_fare:
+        if x["url"] not in cache:
+            if fatti >= CONFIG.get("max_dettagli_per_esecuzione", 150):
+                continue   # gli altri al prossimo aggiornamento
+            try:
+                cache[x["url"]] = leggi_dettaglio(x["url"])
+            except TempoScaduto:
+                raise
+            except Exception:
+                cache[x["url"]] = {}
+            fatti += 1
+        d = cache.get(x["url"], {})
+        x["oggetto"] = d.get("oggetto") or x["oggetto"]
+        x["dal"] = x["dal"] or d.get("dal", "")
+        x["al"] = x["al"] or d.get("al", "")
+    if fatti:
+        log(f"{azienda['nome']}: completati {fatti} atti dalla pagina di dettaglio")
 
 
 def estrai_atti_albotelematico(soup, url_pagina):
@@ -320,48 +375,51 @@ def aggiorna_archivio(novita):
             w.writerow({**x, "parole": ", ".join(x["parole"])})
 
 
-def genera_sito(correnti, errori, baseline_per_azienda, visti, url_nuovi, momento):
-    """Pagina web statica: atti in pubblicazione + archivio delle novità degli ultimi 365 giorni."""
-    oggi = momento.date().isoformat()
-    atti, visti_url = [], set()
-    for x in correnti:
-        r = visti.get(x["url"], momento.strftime("%Y-%m-%dT%H:%M"))
-        atti.append({"a": x["azienda"], "s": x["sezione"], "t": x["titolo"], "o": x["oggetto"],
-                     "d": x["dal"], "f": x["al"], "m": x["ambito"], "u": x["url"], "r": r,
-                     "k": in_evidenza(x), "p": True,
-                     "b": r[:10] == baseline_per_azienda.get(x["azienda"]) and x["url"] not in url_nuovi})
-        visti_url.add(x["url"])
-    guaste = {e.split(": ", 1)[0] for e in errori}
+def data_iso(s):
+    m = re.match(r"(\d{2})[./-](\d{2})[./-](\d{4})", s or "")
+    return f"{m[3]}-{m[2]}-{m[1]}" if m else ""
 
-    def data_iso(s):
-        m = re.match(r"(\d{2})[./-](\d{2})[./-](\d{4})", s or "")
-        return f"{m[3]}-{m[2]}-{m[1]}" if m else ""
 
-    for a in atti:   # atti letti ora: "in pubblicazione" se la fine pubblicazione non è passata
-        fine = data_iso(a["f"])
-        a["p"] = not fine or fine >= oggi
-        a["i"] = data_iso(a["d"])   # inizio pubblicazione, per l'ordinamento
-
-    def ancora_in_pubblicazione(row):
-        # per le aziende non lette in questa esecuzione si usa la data di fine pubblicazione
-        if row["azienda"] not in guaste:
-            return False
-        m = re.match(r"(\d{2})[./-](\d{2})[./-](\d{4})", row["al"] or "")
-        return bool(m) and f"{m[3]}-{m[2]}-{m[1]}" >= oggi
-
+def carica_registro():
+    if REGISTRO_FILE.exists():
+        return json.loads(REGISTRO_FILE.read_text(encoding="utf-8"))
+    registro = {}
+    # prima volta: si recupera lo storico delle novità già archiviate nel CSV
     if ARCHIVE_FILE.exists():
-        limite = (momento - timedelta(days=365)).date().isoformat()
         with ARCHIVE_FILE.open(encoding="utf-8-sig") as f:
             for row in csv.DictReader(f, delimiter=";"):
-                if row["url"] in visti_url or row["rilevato_il"] < limite:
-                    continue
-                visti_url.add(row["url"])
-                atti.append({"a": row["azienda"], "s": row["sezione"], "t": row["titolo"], "o": row["oggetto"],
-                             "d": row["dal"], "f": row["al"], "m": row["ambito"], "u": row["url"],
-                             "r": row["rilevato_il"], "k": [k for k in row["parole"].split(", ") if k],
-                             "p": ancora_in_pubblicazione(row), "b": False, "i": data_iso(row["dal"])})
-    dati = {"generato": momento.strftime("%d/%m/%Y alle %H:%M"), "ts": momento.strftime("%Y-%m-%dT%H:%M"),
-            "oggi": oggi,
+                registro[row["url"]] = {"a": row["azienda"], "s": row["sezione"], "t": row["titolo"],
+                                        "o": row["oggetto"], "d": row["dal"], "f": row["al"],
+                                        "m": row["ambito"], "r": row["rilevato_il"], "v": row["rilevato_il"]}
+    return registro
+
+
+def salva_registro(registro, momento):
+    """Una riga per atto: i salvataggi successivi producono differenze piccole nello storico."""
+    limite = (momento - timedelta(days=365)).date().isoformat()
+    tenuti = {u: x for u, x in registro.items() if x["r"][:10] >= limite}
+    righe = [json.dumps(u, ensure_ascii=False) + ":" + json.dumps(x, ensure_ascii=False, separators=(",", ":"))
+             for u, x in sorted(tenuti.items())]
+    REGISTRO_FILE.write_text("{\n" + ",\n".join(righe) + "\n}\n", encoding="utf-8")
+
+
+def genera_sito(registro, errori, baseline_per_azienda, url_nuovi, momento):
+    """Pagina web statica costruita dal registro di tutti gli atti conosciuti (ultimi 365 giorni)."""
+    oggi, ts = momento.date().isoformat(), momento.strftime("%Y-%m-%dT%H:%M")
+    recenti = (momento - timedelta(days=30)).date().isoformat()
+    aziende = {a["nome"] for a in CONFIG["aziende"] if a.get("attivo", True) and not a.get("manuale")}
+    atti = []
+    for u, x in registro.items():
+        if x["a"] not in aziende:
+            continue
+        fine = data_iso(x["f"])
+        # in pubblicazione: fino alla data di fine; se l'atto non la riporta, se visto nell'ultimo mese
+        p = fine >= oggi if fine else (x.get("v", "") >= recenti or x.get("v") == ts)
+        atti.append({"a": x["a"], "s": x["s"], "t": x["t"], "o": x["o"], "d": x["d"], "f": x["f"],
+                     "m": x["m"], "u": u, "r": x["r"], "k": in_evidenza({"titolo": x["t"], "oggetto": x["o"]}),
+                     "p": p, "i": data_iso(x["d"]),
+                     "b": x["r"][:10] == baseline_per_azienda.get(x["a"]) and u not in url_nuovi})
+    dati = {"generato": momento.strftime("%d/%m/%Y alle %H:%M"), "ts": ts, "oggi": oggi,
             "aziende": [a["nome"] for a in CONFIG["aziende"] if a.get("attivo", True)],
             "manuali": {a["nome"]: a["albo"] for a in CONFIG["aziende"] if a.get("attivo", True) and a.get("manuale")},
             "anomalie": [{"azienda": e.split(": ", 1)[0], "errore": e.split(": ", 1)[-1][:160]} for e in errori],
@@ -370,7 +428,7 @@ def genera_sito(correnti, errori, baseline_per_azienda, visti, url_nuovi, moment
     html = SITO_TEMPLATE.read_text(encoding="utf-8").replace("/*__DATI__*/null", js)
     SITO_DIR.mkdir(exist_ok=True)
     (SITO_DIR / "index.html").write_text(html, encoding="utf-8")
-    print(f"Sito generato: {len(atti)} atti")
+    log(f"Sito generato: {len(atti)} atti ({sum(1 for a in atti if a['p'])} in pubblicazione)")
 
 
 # ---------------------------------------------------------------- main
@@ -394,19 +452,27 @@ def main():
     visti = stato.setdefault("visti", {})
     inizializzate = set(stato.setdefault("aziende_inizializzate", []))
     data_baseline = stato.setdefault("baseline", {})
+    dettagli = stato.setdefault("dettagli", {})   # oggetti letti dalle pagine di dettaglio
+    nuovo_registro = not REGISTRO_FILE.exists()
+    registro = carica_registro()
     momento = adesso()
     oggi, ts = momento.date().isoformat(), momento.strftime("%Y-%m-%dT%H:%M")
-    novita, errori, correnti = [], [], []
+    novita, errori = [], []
 
     # le aziende "manuali" compaiono nel sito solo come collegamento diretto all'albo
     attive = [az for az in CONFIG["aziende"] if az.get("attivo", True) and not az.get("manuale")]
     SCADENZA[0] = time.time() + CONFIG.get("tempo_massimo_minuti", 80) * 60
+    if nuovo_registro:
+        log("Registro atti assente: lettura completa di tutte le pagine")
 
     def leggi_azienda(az):
         _locale.solo_browser = False
         inizio = time.time()
+        # lettura completa (senza fermarsi alle pagine già note) al primo avvio o senza registro
+        completa = nuovo_registro or az["nome"] not in inizializzate
         try:
-            atti = SCANSIONI[az.get("piattaforma", "wordpress")](az, visti, az["nome"] not in inizializzate)
+            atti = SCANSIONI[az.get("piattaforma", "wordpress")](az, visti, completa)
+            arricchisci(az, atti, dettagli)
             log(f"{az['nome']}: {len(atti)} atti in {time.time() - inizio:.0f} s")
             return atti, None
         except Exception as e:  # un sito irraggiungibile non deve bloccare gli altri
@@ -427,23 +493,30 @@ def main():
         if not atti:
             errori.append(f"{nome}: nessun atto rilevato — verificare URL o struttura della pagina")
             continue
-        correnti.extend({**x, "azienda": nome} for x in atti)
         for x in atti:
             if x["url"] not in visti:
                 visti[x["url"]] = ts          # data e ora della prima rilevazione
                 if not primo_avvio:
                     novita.append({**x, "azienda": nome, "rilevato_il": oggi, "parole": in_evidenza(x)})
+            prec = registro.get(x["url"], {})
+            registro[x["url"]] = {
+                "a": nome, "s": x["sezione"], "t": x["titolo"],
+                "o": x["oggetto"] or prec.get("o", ""), "d": x["dal"] or prec.get("d", ""),
+                "f": x["al"] or prec.get("f", ""), "m": x["ambito"] or prec.get("m", ""),
+                "r": prec.get("r") or visti[x["url"]], "v": ts}
         if primo_avvio:
             inizializzate.add(nome)
             data_baseline[nome] = oggi
 
     limite = (momento - timedelta(days=GIORNI_CONSERVAZIONE)).date().isoformat()
     stato["visti"] = {u: d for u, d in visti.items() if d >= limite}
+    stato["dettagli"] = {u: d for u, d in dettagli.items() if u in stato["visti"]}
     stato["aziende_inizializzate"] = sorted(inizializzate)
     STATE_FILE.write_text(json.dumps(stato, ensure_ascii=False, indent=1), encoding="utf-8")
+    salva_registro(registro, momento)
     aggiorna_archivio(novita)
-    genera_sito(correnti, errori, data_baseline, visti, {x["url"] for x in novita}, momento)
-    print(f"Novità: {len(novita)} · Anomalie: {len(errori)}")
+    genera_sito(registro, errori, data_baseline, {x["url"] for x in novita}, momento)
+    log(f"Novità: {len(novita)} · Anomalie: {len(errori)}")
     return 0
 
 

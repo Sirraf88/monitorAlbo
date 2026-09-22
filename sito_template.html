@@ -152,10 +152,13 @@ const oggi = a => !a.b && a.r.slice(0, 10) === DATI.oggi;
 const dallaVisita = a => !a.b && !!visitaPrecedente && a.r > visitaPrecedente;
 const nuovo = a => visitaPrecedente ? dallaVisita(a) : oggi(a);
 
+// "Oggi" e "Ultimi 7 giorni" considerano sia la data in cui il monitor ha rilevato l'atto,
+// sia la data di inizio pubblicazione: così compaiono anche gli atti già presenti al primo avvio.
+const pubblicatoEntro = (a, giorni) => !!a.i && giorniFa(a.i) < giorni && giorniFa(a.i) >= 0;
 function nelPeriodo(a){
   if (stato.periodo === "visita") return dallaVisita(a);
-  if (stato.periodo === "oggi") return oggi(a);
-  if (stato.periodo === "7") return !a.b && giorniFa(a.r) < 7;
+  if (stato.periodo === "oggi") return oggi(a) || pubblicatoEntro(a, 1);
+  if (stato.periodo === "7") return (!a.b && giorniFa(a.r) < 7) || pubblicatoEntro(a, 7);
   if (stato.periodo === "pub") return a.p;
   return true;
 }
