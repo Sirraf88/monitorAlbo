@@ -552,20 +552,32 @@ def main():
         completa = nuovo_registro or az["nome"] not in inizializzate
         try:
             atti = SCANSIONI[az.get("piattaforma", "wordpress")](az, visti, completa)
-            arricchisci(az, atti, dettagli)
-            log(f"{az['nome']}: {len(atti)} atti in {time.time() - inizio:.0f} s")
-            return atti, None
+            # oltre agli atti letti ora, si completano quelli già nel registro rimasti senza oggetto
+            # (gli aggiornamenti successivi rileggono solo le prime pagine di ogni sezione)
+            letti = {x["url"] for x in atti}
+            arretrati = [{"url": u, "titolo": r["t"], "oggetto": r["o"], "dal": r["d"], "al": r["f"],
+                          "arretrato": True}
+                         for u, r in registro.items()
+                         if r["a"] == az["nome"] and not r["o"] and u not in letti]
+            arricchisci(az, atti + arretrati, dettagli)
+            completati = [x for x in arretrati if x["oggetto"]]
+            log(f"{az['nome']}: {len(atti)} atti in {time.time() - inizio:.0f} s"
+                + (f"; completati anche {len(completati)} atti già in archivio" if completati else ""))
+            return atti, completati, None
         except Exception as e:  # un sito irraggiungibile non deve bloccare gli altri
             log(f"{az['nome']}: ERRORE {type(e).__name__}: {e}")
-            return None, e
+            return None, [], e
         finally:
             chiudi_browser()
 
     with ThreadPoolExecutor(max_workers=len(attive)) as pool:
         risultati = list(pool.map(leggi_azienda, attive))
 
-    for az, (atti, errore) in zip(attive, risultati):
+    for az, (atti, completati, errore) in zip(attive, risultati):
         nome = az["nome"]
+        for x in completati:   # oggetto e date recuperati per atti già in archivio
+            r = registro[x["url"]]
+            r["o"], r["d"], r["f"] = x["oggetto"], r["d"] or x["dal"], r["f"] or x["al"]
         primo_avvio = nome not in inizializzate
         if errore is not None:
             errori.append(f"{nome}: {spiega_errore(errore)}")
