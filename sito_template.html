@@ -211,7 +211,7 @@ function aggiorna(){ disegnaAziende(); disegnaElenco(); }
 
 // Avvio
 $("aggiornato").textContent = DATI.generato
-  ? `Aggiornato il ${DATI.generato}. Aggiornamenti automatici ogni giorno alle 8 e alle 15 circa.`
+  ? `Aggiornato il ${DATI.generato}. Aggiornamenti automatici ogni giorno alle 15 e alle 20.`
   : "Nessun dato ancora disponibile: il primo aggiornamento non è ancora stato eseguito.";
 const sezioni = [...new Set(DATI.atti.map(a => a.s))].sort((x, y) => x.localeCompare(y, "it"));
 $("sezione").insertAdjacentHTML("beforeend", sezioni.map(s => `<option>${esc(s)}</option>`).join(""));
