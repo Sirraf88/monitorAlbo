@@ -1,0 +1,49 @@
+name: Monitor albi pretori SSR
+
+on:
+  schedule:
+    - cron: "0 6 * * *"    # 06:00 UTC = 8:00 ora legale / 7:00 ora solare
+    - cron: "0 13 * * *"   # 13:00 UTC = 15:00 ora legale / 14:00 ora solare
+  workflow_dispatch:        # avvio manuale dal tab Actions
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: monitor-albi
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    environment:
+      name: github-pages
+      url: ${{ steps.pubblica.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+      - name: Scansione albi
+        run: python monitor.py
+      - name: Salvataggio stato e archivio
+        run: |
+          git config user.name "monitor-albi"
+          git config user.email "monitor-albi@users.noreply.github.com"
+          git add seen.json archivio_atti.csv
+          git diff --staged --quiet || git commit -m "Aggiornamento $(date +%F)"
+          git push
+      - name: Preparazione sito
+        uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: sito
+      - name: Pubblicazione sito
+        id: pubblica
+        uses: actions/deploy-pages@v4
