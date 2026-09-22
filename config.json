@@ -83,5 +83,6 @@
   "max_pagine_per_sezione": 30,
   "max_profondita_sezioni": 3,
   "giorni_conservazione_stato": 120,
-  "tempo_massimo_minuti": 80
+  "tempo_massimo_minuti": 80,
+  "max_dettagli_per_esecuzione": 400
 }

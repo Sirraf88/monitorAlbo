@@ -71,7 +71,7 @@ def log(msg):
     print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
-def scarica_con_browser(url, attendi=None):
+def scarica_con_browser(url, attendi=None, attesa_ms=45000):
     """Fallback per i portali che rifiutano le richieste non-browser (es. errore 428):
     apre la pagina in Chromium headless (Playwright) e ne restituisce l'HTML.
     Con `attendi` (selettore CSS) aspetta che il contenuto reale compaia, superando
@@ -90,7 +90,7 @@ def scarica_con_browser(url, attendi=None):
     _locale.pagina.goto(url, wait_until="domcontentloaded", timeout=45000)
     if attendi:
         try:
-            _locale.pagina.wait_for_selector(attendi, timeout=45000)
+            _locale.pagina.wait_for_selector(attendi, timeout=attesa_ms)
         except Exception:
             pass   # si restituisce comunque la pagina: la diagnostica la registra nel log
     time.sleep(PAUSA)
@@ -213,10 +213,27 @@ def scansiona_azienda(azienda, visti, primo_avvio):
         visitate.add(url)
         prima = len(atti)
         pagina, n = url, 0
+        con_browser = False   # diventa vero se la sezione risponde solo a un browser vero
         while pagina and n < MAX_PAGINE:
-            soup = scarica(pagina)
+            soup = scarica_con_browser(pagina, "h5 a[href]") if con_browser else scarica(pagina)
             if soup is None:
                 break
+            if (n == 0 and profondita > 0 and not estrai_atti(soup, pagina, radice)
+                    and not link_sezioni(soup, url, radice)):   # le pagine-indice di sottosezioni non contano
+                # Sezione apparentemente vuota: se la pagina dichiara dei risultati (o non dice nulla)
+                # si registra cosa è arrivato e si riprova con il browser.
+                m = RE_RISULTATI.search(" ".join(soup.get_text(" ", strip=True).split()))
+                if m is None or int(m.group(1)) > 0:
+                    diagnostica(f"{azienda['nome']} [{nome_sezione}]", soup)
+                    try:
+                        prova = scarica_con_browser(pagina, "h5 a[href]", 20000)
+                        if estrai_atti(prova, pagina, radice):
+                            soup, con_browser = prova, True
+                            log(f"{azienda['nome']}: sezione {nome_sezione} letta con il browser")
+                    except TempoScaduto:
+                        raise
+                    except Exception as e:
+                        log(f"{azienda['nome']}: tentativo con browser non riuscito ({type(e).__name__})")
             if n == 0:
                 if profondita < MAX_PROFONDITA:
                     for sub_url, sub_nome in link_sezioni(soup, url, radice):
@@ -241,6 +258,7 @@ def scansiona_azienda(azienda, visti, primo_avvio):
     return list(atti.values())
 
 
+RE_RISULTATI = re.compile(r"Risultati trovati\s*(\d+)", re.I)
 RE_PUB = re.compile(r"Data di pubblicazione\s*(\d{2}[./-]\d{2}[./-]\d{4})", re.I)
 RE_SCAD = re.compile(r"Data e ora di scadenza\s*(\d{2}[./-]\d{2}[./-]\d{4})", re.I)
 TITOLI = ["h2", "h3", "h4", "h5", "h6"]
@@ -268,27 +286,41 @@ def leggi_dettaglio(url):
     return {"oggetto": oggetto, "dal": pub.group(1) if pub else "", "al": scad.group(1) if scad else ""}
 
 
+def data_atto(x):
+    """Data per l'ordinamento: inizio pubblicazione o, in mancanza, la data nel titolo."""
+    m = re.search(r"(\d{2})[./-](\d{2})[./-](\d{4})", x["dal"] or x["titolo"])
+    return f"{m[3]}-{m[2]}-{m[1]}" if m else ""
+
+
 def arricchisci(azienda, atti, cache):
-    """Completa gli atti privi di oggetto leggendo la pagina di dettaglio (una sola volta per atto)."""
-    da_fare = [x for x in atti if not x["oggetto"] and "/ap/" in x["url"]]
-    fatti = 0
+    """Completa gli atti privi di oggetto leggendo la pagina di dettaglio (una sola volta per atto).
+    Si parte dai più recenti; il limite per esecuzione evita di sovraccaricare i siti."""
+    da_fare = sorted((x for x in atti if not x["oggetto"] and "/ap/" in x["url"]), key=data_atto, reverse=True)
+    fatti, vuoti, esempio = 0, 0, ""
     for x in da_fare:
         if x["url"] not in cache:
-            if fatti >= CONFIG.get("max_dettagli_per_esecuzione", 150):
+            if fatti >= CONFIG.get("max_dettagli_per_esecuzione", 400):
                 continue   # gli altri al prossimo aggiornamento
             try:
                 cache[x["url"]] = leggi_dettaglio(x["url"])
             except TempoScaduto:
                 raise
-            except Exception:
+            except Exception as e:
                 cache[x["url"]] = {}
+                log(f"{azienda['nome']}: dettaglio non leggibile {x['url']} ({type(e).__name__})")
             fatti += 1
+            if not cache[x["url"]].get("oggetto"):
+                vuoti += 1
+                esempio = esempio or x["url"]
         d = cache.get(x["url"], {})
         x["oggetto"] = d.get("oggetto") or x["oggetto"]
         x["dal"] = x["dal"] or d.get("dal", "")
         x["al"] = x["al"] or d.get("al", "")
-    if fatti:
-        log(f"{azienda['nome']}: completati {fatti} atti dalla pagina di dettaglio")
+    restanti = sum(1 for x in da_fare if x["url"] not in cache)
+    if da_fare:
+        log(f"{azienda['nome']}: atti senza oggetto nell'elenco {len(da_fare)}; completati ora {fatti - vuoti}; "
+            f"senza oggetto anche nel dettaglio {vuoti}{' (es. ' + esempio + ')' if esempio else ''}; "
+            f"rimandati al prossimo aggiornamento {restanti}")
 
 
 def estrai_atti_albotelematico(soup, url_pagina):
