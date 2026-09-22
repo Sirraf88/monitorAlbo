@@ -77,8 +77,9 @@
     "Direttore di Struttura Complessa"
   ],
   "traccia_allegati_sezioni": true,
-  "pausa_secondi": 1.5,
+  "pausa_secondi": 1.0,
   "max_pagine_per_sezione": 30,
   "max_profondita_sezioni": 3,
-  "giorni_conservazione_stato": 120
+  "giorni_conservazione_stato": 120,
+  "tempo_massimo_minuti": 80
 }

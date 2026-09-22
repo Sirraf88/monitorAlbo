@@ -13,7 +13,9 @@ import csv
 import json
 import re
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from pathlib import Path
@@ -54,7 +56,18 @@ session.headers.update({
     "Upgrade-Insecure-Requests": "1",
 })
 
-_browser = {}
+# Ogni azienda viene letta in un thread separato (server diversi, quindi in parallelo);
+# il browser di riserva e il limite di tempo sono gestiti per thread.
+_locale = threading.local()
+SCADENZA = [None]   # istante oltre il quale le scansioni si interrompono (fissato in main)
+
+
+class TempoScaduto(Exception):
+    pass
+
+
+def log(msg):
+    print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
 def scarica_con_browser(url):
@@ -64,31 +77,36 @@ def scarica_con_browser(url):
         from playwright.sync_api import sync_playwright
     except ImportError:
         raise RuntimeError("accesso bloccato dal portale (428/403) e Playwright non installato")
-    if "pagina" not in _browser:
-        _browser["pw"] = sync_playwright().start()
-        _browser["b"] = _browser["pw"].chromium.launch()
-        _browser["pagina"] = _browser["b"].new_page(locale="it-IT")
-    pg = _browser["pagina"]
-    pg.goto(url, wait_until="networkidle", timeout=60000)
+    if getattr(_locale, "pagina", None) is None:
+        _locale.pw = sync_playwright().start()
+        _locale.browser = _locale.pw.chromium.launch()
+        _locale.pagina = _locale.browser.new_page(locale="it-IT")
+    _locale.pagina.goto(url, wait_until="domcontentloaded", timeout=30000)
     time.sleep(PAUSA)
-    return BeautifulSoup(pg.content(), "html.parser")
+    return BeautifulSoup(_locale.pagina.content(), "html.parser")
 
 
 def chiudi_browser():
-    if "b" in _browser:
-        _browser["b"].close()
-        _browser["pw"].stop()
+    if getattr(_locale, "pagina", None) is not None:
+        _locale.browser.close()
+        _locale.pw.stop()
+        _locale.pagina = None
 
 
 # ---------------------------------------------------------------- rete e parsing
 def scarica(url):
     """GET con 3 tentativi; None se la pagina non esiste."""
+    if SCADENZA[0] and time.time() > SCADENZA[0]:
+        raise TempoScaduto()
+    if getattr(_locale, "solo_browser", False):
+        return scarica_con_browser(url)
     for tentativo in range(3):
         try:
             r = session.get(url, timeout=30)
             if r.status_code == 404:
                 return None
             if r.status_code in (403, 428):
+                _locale.solo_browser = True   # da qui in poi, per questo sito, solo browser
                 return scarica_con_browser(url)
             r.raise_for_status()
             time.sleep(PAUSA)
@@ -179,6 +197,7 @@ def scansiona_azienda(azienda, visti, primo_avvio):
         if url in visitate:
             continue
         visitate.add(url)
+        log(f"{azienda['nome']}: sezione {nome_sezione}")
         pagina, n = url, 0
         while pagina and n < MAX_PAGINE:
             soup = scarica(pagina)
@@ -317,6 +336,8 @@ def genera_sito(correnti, errori, baseline_per_azienda, visti, url_nuovi, moment
 # ---------------------------------------------------------------- main
 def spiega_errore(e):
     """Messaggio comprensibile per il riquadro anomalie del sito."""
+    if isinstance(e, TempoScaduto):
+        return "lettura non completata nel tempo disponibile: riprende al prossimo aggiornamento"
     if isinstance(e, requests.Timeout):
         return "il sito non ha risposto in tempo"
     if isinstance(e, requests.ConnectionError):
@@ -337,15 +358,30 @@ def main():
     oggi, ts = momento.date().isoformat(), momento.strftime("%Y-%m-%dT%H:%M")
     novita, errori, correnti = [], [], []
 
-    for az in CONFIG["aziende"]:
-        nome = az["nome"]
-        if not az.get("attivo", True):
-            continue
-        primo_avvio = nome not in inizializzate
+    attive = [az for az in CONFIG["aziende"] if az.get("attivo", True)]
+    SCADENZA[0] = time.time() + CONFIG.get("tempo_massimo_minuti", 80) * 60
+
+    def leggi_azienda(az):
+        _locale.solo_browser = False
+        inizio = time.time()
         try:
-            atti = SCANSIONI[az.get("piattaforma", "wordpress")](az, visti, primo_avvio)
+            atti = SCANSIONI[az.get("piattaforma", "wordpress")](az, visti, az["nome"] not in inizializzate)
+            log(f"{az['nome']}: {len(atti)} atti in {time.time() - inizio:.0f} s")
+            return atti, None
         except Exception as e:  # un sito irraggiungibile non deve bloccare gli altri
-            errori.append(f"{nome}: {spiega_errore(e)}")
+            log(f"{az['nome']}: ERRORE {type(e).__name__}: {e}")
+            return None, e
+        finally:
+            chiudi_browser()
+
+    with ThreadPoolExecutor(max_workers=len(attive)) as pool:
+        risultati = list(pool.map(leggi_azienda, attive))
+
+    for az, (atti, errore) in zip(attive, risultati):
+        nome = az["nome"]
+        primo_avvio = nome not in inizializzate
+        if errore is not None:
+            errori.append(f"{nome}: {spiega_errore(errore)}")
             continue
         if not atti:
             errori.append(f"{nome}: nessun atto rilevato — verificare URL o struttura della pagina")
@@ -360,7 +396,6 @@ def main():
             inizializzate.add(nome)
             data_baseline[nome] = oggi
 
-    chiudi_browser()
     limite = (momento - timedelta(days=GIORNI_CONSERVAZIONE)).date().isoformat()
     stato["visti"] = {u: d for u, d in visti.items() if d >= limite}
     stato["aziende_inizializzate"] = sorted(inizializzate)
