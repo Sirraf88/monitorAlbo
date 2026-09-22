@@ -18,7 +18,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 110
     environment:
       name: github-pages
       url: ${{ steps.pubblica.outputs.page_url }}
