@@ -4994,7 +4994,10 @@
   "https://www.aressardegna.it/ap/asl-ss-conferimento-di-n-6-incarichi-a-t-d-nel-ruolo-unico-di-assistenza-primaria-a-ciclo-di-scelta-ambito-2-3-comune-di-alghero/": "2026-09-25T15:07",
   "https://www.aressardegna.it/ap/asl-ss-conferimento-di-n-2-incarichi-a-t-d-nel-ruolo-unico-di-assistenza-primaria-a-ciclo-di-scelta-ambito-2-2-comune-di-ittiri/": "2026-09-25T15:07",
   "https://www.aressardegna.it/ap/asl-ss-conferimento-incarico-a-t-d-nel-ruolo-unico-di-assistenza-primaria-a-ciclo-di-scelta-ambito-2-3-comune-di-olmedo/": "2026-09-25T15:07",
-  "https://www.aressardegna.it/ap/asl-ss-conferimento-di-incarico-a-t-d-nel-ruolo-unico-di-assistenza-primaria-a-ciclo-di-scelta-ambito-3-1-comune-pattada/": "2026-09-25T15:07"
+  "https://www.aressardegna.it/ap/asl-ss-conferimento-di-incarico-a-t-d-nel-ruolo-unico-di-assistenza-primaria-a-ciclo-di-scelta-ambito-3-1-comune-pattada/": "2026-09-25T15:07",
+  "https://www.aslgallura.it/ap/indizione-e-approvazione-avviso-di-pubblica-selezione-per-il-conferimento-di-un-incarico-quinquennale-rinnovabile-di-direttore-di-struttura-complessa-per-la-direzione-della-s-c-pronto-soccorso-del/": "2026-09-25T20:19",
+  "https://www.asl3nuoro.it/ap/deliberazione-del-direttore-generale-asl-n-3-di-nuoro-n-1084-del-25-09-2026/": "2026-09-25T20:19",
+  "https://www.asl5oristano.it/ap/regolamento-percorso-di-tutela/": "2026-09-25T20:19"
  },
  "aziende_inizializzate": [
   "AOU Sassari",
@@ -34393,6 +34396,24 @@
    "oggetto": "Piano Nazionale di Ripresa e Resilienza (PNRR) - Missione 6 Salute - Componente 1 - Investimento 1.1 “Case della Comunità e presa in carico della persona” - Intervento in overbooking - Lavori di adeguamento funzionale e riqualificazione degli spazi della struttura ospedaliera esistente di proprietà ASL, destinata alla realizzazione della Casa della Comunità Spoke presso il Presidio Ospedaliero “San Giuseppe Calasanzio” di Isili (SU) - CUP: D84E26000020006 - CIG: BBB0ADF3A2 - Liquidazione del corrispettivo, svincolo della cauzione definitiva, approvazione del certificato di regolare esecuzione relativo ai servizi di progettazione esecutiva, coordinamento della sicurezza in fase di progettazione ed esecuzione e direzione dei lavori",
    "dal": "25.09.2026",
    "al": "10.10.2026",
+   "ver": 2
+  },
+  "https://www.asl3nuoro.it/ap/deliberazione-del-direttore-generale-asl-n-3-di-nuoro-n-1084-del-25-09-2026/": {
+   "oggetto": "Programma triennale degli acquisti di forniture e servizi 2026/2028 dell’Azienda Socio Sani-taria Locale n. 3 di Nuoro – Rettifica deliberazione n. 713 del 13.11.2025.",
+   "dal": "25.09.2026",
+   "al": "10.10.2026",
+   "ver": 2
+  },
+  "https://www.asl5oristano.it/ap/regolamento-percorso-di-tutela/": {
+   "oggetto": "Regolamento “Percorso di tutela” di accesso alternativo alle prestazioni specialistiche del cittadino ai sensi dell’art. 3, comma 13, del D. Lgs. n. 124/1998",
+   "dal": "25.09.2026",
+   "al": "",
+   "ver": 2
+  },
+  "https://www.aslgallura.it/ap/indizione-e-approvazione-avviso-di-pubblica-selezione-per-il-conferimento-di-un-incarico-quinquennale-rinnovabile-di-direttore-di-struttura-complessa-per-la-direzione-della-s-c-pronto-soccorso-del/": {
+   "oggetto": "Indizione e approvazione avviso di pubblica selezione per il conferimento di un incarico quinquennale, rinnovabile, di Direttore di Struttura Complessa, per la Direzione della S.C. Pronto Soccorso del P.O. \"Giovanni Paolo II\" di Olbia della ASL n. 2 della Gallura - indetto con deliberazione ARES n. 248 DEL 07/09/2026. Si informa che l'estratto dell'avviso è stato pubblicato sulla Gazzetta Ufficiale della Repubblica Italiana - IV serie speciale \"Concorsi ed esami\" n. 74 del 25/09/2026 - scadenza presentazione domande 25/10/2026, prorogato di diritto al 26/10/2026.",
+   "dal": "25.09.2026",
+   "al": "26.10.2026",
    "ver": 2
   }
  }
