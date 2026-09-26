@@ -4997,7 +4997,8 @@
   "https://www.aressardegna.it/ap/asl-ss-conferimento-di-incarico-a-t-d-nel-ruolo-unico-di-assistenza-primaria-a-ciclo-di-scelta-ambito-3-1-comune-pattada/": "2026-09-25T15:07",
   "https://www.aslgallura.it/ap/indizione-e-approvazione-avviso-di-pubblica-selezione-per-il-conferimento-di-un-incarico-quinquennale-rinnovabile-di-direttore-di-struttura-complessa-per-la-direzione-della-s-c-pronto-soccorso-del/": "2026-09-25T20:19",
   "https://www.asl3nuoro.it/ap/deliberazione-del-direttore-generale-asl-n-3-di-nuoro-n-1084-del-25-09-2026/": "2026-09-25T20:19",
-  "https://www.asl5oristano.it/ap/regolamento-percorso-di-tutela/": "2026-09-25T20:19"
+  "https://www.asl5oristano.it/ap/regolamento-percorso-di-tutela/": "2026-09-25T20:19",
+  "https://www.aressardegna.it/ap/pubblica-selezione-conferimento-incarico-quinquennale-rinnovabile-di-direttore-struttura-complessa-direzione-sc-pronto-soccorso-p-o-giovanni-paolo-ii-asl-o-olbia-0248/": "2026-09-26T15:04"
  },
  "aziende_inizializzate": [
   "AOU Sassari",
@@ -34412,6 +34413,12 @@
   },
   "https://www.aslgallura.it/ap/indizione-e-approvazione-avviso-di-pubblica-selezione-per-il-conferimento-di-un-incarico-quinquennale-rinnovabile-di-direttore-di-struttura-complessa-per-la-direzione-della-s-c-pronto-soccorso-del/": {
    "oggetto": "Indizione e approvazione avviso di pubblica selezione per il conferimento di un incarico quinquennale, rinnovabile, di Direttore di Struttura Complessa, per la Direzione della S.C. Pronto Soccorso del P.O. \"Giovanni Paolo II\" di Olbia della ASL n. 2 della Gallura - indetto con deliberazione ARES n. 248 DEL 07/09/2026. Si informa che l'estratto dell'avviso è stato pubblicato sulla Gazzetta Ufficiale della Repubblica Italiana - IV serie speciale \"Concorsi ed esami\" n. 74 del 25/09/2026 - scadenza presentazione domande 25/10/2026, prorogato di diritto al 26/10/2026.",
+   "dal": "25.09.2026",
+   "al": "26.10.2026",
+   "ver": 2
+  },
+  "https://www.aressardegna.it/ap/pubblica-selezione-conferimento-incarico-quinquennale-rinnovabile-di-direttore-struttura-complessa-direzione-sc-pronto-soccorso-p-o-giovanni-paolo-ii-asl-o-olbia-0248/": {
+   "oggetto": "Indizione e approvazione avviso di pubblica selezione per il conferimento di un incarico quinquennale, rinnovabile, di Direttore di Struttura Complessa, per la Direzione della S.C. Pronto Soccorso del P.O. “Giovanni Paolo II” di Olbia della ASL n. 2 della Gallura\", pubblicato sulla Gazzetta Ufficiale della Repubblica Italiana – IV serie speciale “Concorsi ed esami” n. 74 del 25/09/2026 – scadenza presentazione domande 25/10/2026 Stato In svolgimento Non scaduti Tipologia Selezioni pubbliche per conferimento incarichi a tempo determinato Figura Professionale Area Sanitaria Inquadramento Dirigente Ente di riferimento ASL Gallura",
    "dal": "25.09.2026",
    "al": "26.10.2026",
    "ver": 2
