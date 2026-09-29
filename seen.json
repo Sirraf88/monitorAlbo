@@ -5171,7 +5171,14 @@
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2551-del-29-09-2026/": "2026-09-29T15:09",
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2550-del-29-09-2026/": "2026-09-29T15:09",
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2549-del-29-09-2026/": "2026-09-29T15:09",
-  "https://www.aressardegna.it/ap/asl-nu-conferimento-di-incarico-provvisorio-per-attivita-di-assistenza-sanitaria-istituto-penitenziario-c-c-badu-e-carros-nuoro/": "2026-09-29T15:09"
+  "https://www.aressardegna.it/ap/asl-nu-conferimento-di-incarico-provvisorio-per-attivita-di-assistenza-sanitaria-istituto-penitenziario-c-c-badu-e-carros-nuoro/": "2026-09-29T15:09",
+  "https://www.aslmediocampidano.it/ap/determinazione-dirigenziale-n-372-del-29-09-2026/": "2026-09-29T20:21",
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1197-del-29-09-2026/": "2026-09-29T20:21",
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1196-del-29-09-2026/": "2026-09-29T20:21",
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1195-del-29-09-2026/": "2026-09-29T20:21",
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1194-del-29-09-2026/": "2026-09-29T20:21",
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1193-del-29-09-2026/": "2026-09-29T20:21",
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1139-del-29-09-2029/": "2026-09-29T20:21"
  },
  "aziende_inizializzate": [
   "AOU Sassari",
@@ -35632,6 +35639,48 @@
    "oggetto": "AVVISO PUBBLICO URGENTE per il conferimento di incarico provvisorio per l’attività di Assistenza negli Istituti penitenziari art. 74 comma 3 ACN Medicina Generale 15/01/2026- ASL Nuoro- Istituto penitenziario C.C. Badu ‘e Carros – 24 ore settimanali Stato Esito pubblicato",
    "dal": "29.09.2026",
    "al": "12.10.2026",
+   "ver": 2
+  },
+  "https://www.aslmediocampidano.it/ap/determinazione-dirigenziale-n-372-del-29-09-2026/": {
+   "oggetto": "Progetto RAS-2025-PRP20/25-SC.MAMMOGRAF. Liquidazione compensi di attività assistenziali in prestazione aggiuntiva per le attività dello Screening mammografico. Dirigenza Medica Radiodiagnostica del P.O. Binaghi. Periodo luglio-agosto 2026.",
+   "dal": "29.09.2026",
+   "al": "14.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1197-del-29-09-2026/": {
+   "oggetto": "Assenso al comando in uscita presso l'Istituto Nazionale della Previdenza Sociale (INPS) ai sensi dellart.30, comma 2-sexies, del D.Lgs. 165/2001 e s.m.i. della Dott.ssa Silvia Aledda - Collaboratore Professionale Infermiere",
+   "dal": "29.09.2026",
+   "al": "14.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1196-del-29-09-2026/": {
+   "oggetto": "Assegnazione temporanea ai sensi dellart.42 bis del D.Lgs. n.151/2001 e s.m.i. presso ASL Cagliari della Dott.ssa Selma Loffredo, Educatore Professionale, dipendente a tempo indeterminato della ASL Sulcis",
+   "dal": "29.09.2026",
+   "al": "14.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1195-del-29-09-2026/": {
+   "oggetto": "Assegnazione temporanea ai sensi dellart.42 bis del D.Lgs. n.151/2001 e s.m.i. presso ASL Cagliari della Dott.ssa Francesca Corona, Dirigente Medico di Medicina Fisica e Riabilitativa, dipendente a tempo indeterminato della ASL Medio Campidano",
+   "dal": "29.09.2026",
+   "al": "14.10.2026",
+   "ver": 2
+  },
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1139-del-29-09-2029/": {
+   "oggetto": "Contratto ponte di cui all’atto deliberativo n. 801 del 26.05.2020, avente ad oggetto Servizi integrati per la gestione delle apparecchiature elettromedicali” – Lotto 1. Decorrenza 01.10.2026 – 31.12.2026. Importo complessivo € 1.200.000,00 oltre Iva di Legge. Operatore Economico RTI HC Hospital Consulting S.p.A. (Mandataria) – (Mandanti) GE Medical Systems Italia S.p.A. e Siemens Healthcare S.r.l. Codice CIG 8312214FF9.",
+   "dal": "29.09.2026",
+   "al": "14.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1194-del-29-09-2026/": {
+   "oggetto": "Assenso alla mobilità per compensazione tra le dipendenti Isabella Ligas (ASL Cagliari) e Daniela Medda (ASL Sassari) - profilo Assistente Amministrativo",
+   "dal": "29.09.2026",
+   "al": "14.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1193-del-29-09-2026/": {
+   "oggetto": "Assenso al comando in uscita presso l’Istituto Nazionale della Previdenza Sociale (INPS) ai sensi dell’art.30, comma 2-sexies, del D.Lgs. 165/2001 e s.m.i. della Dott.ssa Rosa Pau – Collaboratore Amministrativo Professionale",
+   "dal": "29.09.2026",
+   "al": "14.10.2026",
    "ver": 2
   }
  }
