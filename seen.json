@@ -5500,7 +5500,16 @@
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2624-del-02-10-2026/": "2026-10-02T15:07",
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2623-del-02-10-2026/": "2026-10-02T15:07",
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2622-del-02-10-2026/": "2026-10-02T15:07",
-  "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2621-del-02-10-2026/": "2026-10-02T15:07"
+  "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2621-del-02-10-2026/": "2026-10-02T15:07",
+  "https://www.aslgallura.it/ap/pubblica-selezione-per-il-conferimento-di-un-incarico-quinquennale-rinnovabile-di-direttore-di-struttura-complessa-per-la-direzione-della-s-c-ginecologia-ed-ostetricia-della-asl-n-2-della-gallura/": "2026-10-02T20:22",
+  "https://www.asl8cagliari.it/ap/determinazione-dirigenziale-n-356-del-02-10-2026/": "2026-10-02T20:22",
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1163-del-02-10-2026/": "2026-10-02T20:22",
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1162-del-02-10-2026/": "2026-10-02T20:22",
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1161-del-02-10-2026/": "2026-10-02T20:22",
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1160-del-02-10-2026/": "2026-10-02T20:22",
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1159-del-02-10-2026/": "2026-10-02T20:22",
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1158-del-02-10-2026/": "2026-10-02T20:22",
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1157-del-02-10-2026/": "2026-10-02T20:22"
  },
  "aziende_inizializzate": [
   "AOU Sassari",
@@ -37917,6 +37926,60 @@
    "oggetto": "Avviso di selezione per la designazione dei responsabili/referenti per il Coordinamento dei Servizi Penitenziari",
    "dal": "02.10.2026",
    "al": "12.10.2026",
+   "ver": 2
+  },
+  "https://www.aslgallura.it/ap/pubblica-selezione-per-il-conferimento-di-un-incarico-quinquennale-rinnovabile-di-direttore-di-struttura-complessa-per-la-direzione-della-s-c-ginecologia-ed-ostetricia-della-asl-n-2-della-gallura/": {
+   "oggetto": "Pubblica selezione per il conferimento di un incarico quinquennale, rinnovabile, di Direttore di Struttura Complessa, per la Direzione della S.C.GINECOLOGIA ED OSTETRICIA, della Asl n. 2 della Gallura - indetta con Deliberazione ARES n. 255 del 11/09/2026. Si informa che l'estratto del bando è stato pubblicato sulla Gazzetta Ufficiale della Repubblica Italiana - IV serie speciale \"Concorsi ed esami\" n. 76 DEL 02/10/2026 - scadenza presentazione domande 02/11/2026.",
+   "dal": "02.10.2026",
+   "al": "02.11.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/determinazione-dirigenziale-n-356-del-02-10-2026/": {
+   "oggetto": "Aggiornamento del Riconoscimento Comunitario UE IT 20 87 ditta SARDA LATTICINI S.R.L. per l'attività di stabilimento di trasformazione latte PP per subingresso della ditta LATTE SARDO SOC. COOP.",
+   "dal": "02.10.2026",
+   "al": "17.10.2026",
+   "ver": 2
+  },
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1163-del-02-10-2026/": {
+   "oggetto": "Autorizzazione a contrarre e contestuale Affidamento, ai sensi dell’art. 50, comma 1, lett. b), del D. Lgs. n. 36/2023, con estensione fino ad € 139.000,00 oltre iva di legge, per la fornitura di n° 2 Congelatori da Laboratorio, da destinare alla S.C. Immunoematologia e Centro Trasfusionale dell’ARNAS G. Brotzu. Operatore Economico Temosa Srl. Importo totale € 49.960,00 oltre iva di legge. CIG BD31D1D1E0",
+   "dal": "02.10.2026",
+   "al": "17.10.2026",
+   "ver": 2
+  },
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1162-del-02-10-2026/": {
+   "oggetto": "Adesione Convenzione Quadro Centrale Regionale di Committenza Sardegna CAT “Guanti Ed. 1 – Lotto 18” avente ad oggetto la fornitura semestrale di guanti da destinare ai vari reparti dell’Arnas G. Brotzu. Ditta Bericah S.p.A. Spesa complessiva semestrale pari ad € 170.681,00 oltre IVA di legge. CIG BD25B077AF",
+   "dal": "02.10.2026",
+   "al": "17.10.2026",
+   "ver": 2
+  },
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1161-del-02-10-2026/": {
+   "oggetto": "Incremento, nell’ambito dell’art. 120, comma 1, lett. b1) e b2) del D. Lgs. 36/2023, del contratto di cui all’atto deliberativo n. 1056 del 25.07.2024, relativo alla Procedura Aperta informatizzata per la fornitura in service di sistemi diagnostici completi per analisi chimico – cliniche per la SC Laboratorio Analisi dell’ARNAS “G. Brotzu” per cinque anni – Lotto 9. Operatore Economico Diasorin Italia S.p.a. Importo complessivo annuale dell’incremento € 25.500,00 oltre Iva di Legge. CIG B12E41C3E0.",
+   "dal": "02.10.2026",
+   "al": "17.10.2026",
+   "ver": 2
+  },
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1160-del-02-10-2026/": {
+   "oggetto": "Riscatto di n.1 tavolo anatomico per autopsia aggiudicato con deliberazione n. 855 del 20.06.2024, installate presso la SC Medicina Legale dell’ARNAS G. Brotzu. Operatore Economico Comfit S.r.l. Importo complessivo pari a € 5.000,00 oltre Iva di Legge. Codice CIG B14E4F5AFA.",
+   "dal": "02.10.2026",
+   "al": "17.10.2026",
+   "ver": 2
+  },
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1159-del-02-10-2026/": {
+   "oggetto": "Adesione Convenzione Quadro Centrale Regionale di Committenza Sardegna CAT “Ausili per incontinenti 2023 Ed. 2 – Lotto 4” avente ad oggetto la fornitura semestrale di ausili per incontinenti da destinare a vari reparti dell’Arnas G. Brotzu. Ditta Santex. Spesa complessiva semestrale pari ad € 65.333,96 oltre IVA di legge. CIG BD3155CBCA",
+   "dal": "02.10.2026",
+   "al": "17.10.2026",
+   "ver": 2
+  },
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1158-del-02-10-2026/": {
+   "oggetto": "Autorizzazione a contrarre e contestuale Affidamento diretto, ai sensi dell’art. 50, comma 1, lett. b), del D. Lgs. n. 36/2023, per la fornitura urgente semestrale di “Videobroncosopi con monitor in Service” da destinare alle Terapie Intensive dell’ARNAS G. Brotzu. Operatore Economico Ambu. Importo complessivo semestrale € 103.140,00 oltre iva di legge. CIG BD1E3DAEDA.",
+   "dal": "02.10.2026",
+   "al": "17.10.2026",
+   "ver": 2
+  },
+  "https://www.arnasbrotzu.it/ap/deliberazione-n-1157-del-02-10-2026/": {
+   "oggetto": "Rettifica parziale Delibera n. 1137 del 29.09.2026",
+   "dal": "02.10.2026",
+   "al": "17.10.2026",
    "ver": 2
   }
  }
