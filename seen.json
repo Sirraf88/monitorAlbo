@@ -5889,7 +5889,30 @@
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2665-del-06-10-2026/": "2026-10-07T15:11",
   "https://www.aressardegna.it/ap/pubblica-selezione-per-il-conferimento-di-un-incarico-quinquennale-della-sc-igiene-degli-alimenti-e-della-nutrizione-sian-afferente-al-dipartimento-di-prevenzione-della-asl-n-8-ca-0259/": "2026-10-07T15:11",
   "https://www.aressardegna.it/ap/pubblica-selezione-per-il-conferimento-di-un-incarico-quinquennale-rinnovabile-di-direttore-s-c-chirurgia-generale-della-asl-n-2-della-gallura-0258/": "2026-10-07T15:11",
-  "https://www.aressardegna.it/ap/asl-cagliari-incarichi-a-tempo-determinato-assistenza-primaria-a-ciclo-orario-2/": "2026-10-07T15:11"
+  "https://www.aressardegna.it/ap/asl-cagliari-incarichi-a-tempo-determinato-assistenza-primaria-a-ciclo-orario-2/": "2026-10-07T15:11",
+  "https://www.asl1sassari.it/ap/deliberazione-del-direttore-generale-n-964-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.asl1sassari.it/ap/deliberazione-del-direttore-generale-n-963-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.asl1sassari.it/ap/deliberazione-del-direttore-generale-n-962-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.asl1sassari.it/ap/determinazione-dirigenziale-n-984-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.asl1sassari.it/ap/determinazione-dirigenziale-n-983-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.asl1sassari.it/ap/determinazione-dirigenziale-n-982-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.aslgallura.it/ap/deliberazione-del-direttore-generale-n-949-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.aslgallura.it/ap/deliberazione-del-direttore-generale-n-948-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.aslgallura.it/ap/deliberazione-del-direttore-generale-n-947-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.aslgallura.it/ap/determinazione-dirigenziale-n-232-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.aslogliastra.it/ap/deliberazione-del-direttore-generale-n-501-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.aslogliastra.it/ap/deliberazione-del-direttore-generale-n-500-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.aslmediocampidano.it/ap/determinazione-dirigenziale-n-392-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.aslmediocampidano.it/ap/determinazione-dirigenziale-n-391-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-938-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1236-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1235-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1234-del-07-10-2026/": "2026-10-07T20:22",
+  "https://www.aousassari.it/ap/determina-dirigenziale-del-07-10-2026-n-70/": "2026-10-07T20:22",
+  "https://www.aousassari.it/ap/determina-dirigenziale-del-07-10-2026-n-69/": "2026-10-07T20:22",
+  "https://www.aousassari.it/ap/determina-dirigenziale-del-07-10-2026-n-68/": "2026-10-07T20:22",
+  "https://www.aousassari.it/ap/determina-dirigenziale-del-07-10-2026-n-67/": "2026-10-07T20:22",
+  "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2678-del-07-10-2026/": "2026-10-07T20:22"
  },
  "aziende_inizializzate": [
   "AOU Sassari",
@@ -40634,6 +40657,144 @@
    "oggetto": "AVVISO MANIFESTAZIONE DI INTERESSE riservata a n. 2 dipendenti in servizio presso il P.O. San Marcellino di Muravera, disponibili a prestare servizio presso i Presidi Ospedalieri e/o Ospedali di Comunità di Cagliari.",
    "dal": "07.10.2026",
    "al": "17.10.2026",
+   "ver": 2
+  },
+  "https://www.asl1sassari.it/ap/deliberazione-del-direttore-generale-n-964-del-07-10-2026/": {
+   "oggetto": "Integrazione elenco Agenti Contabili anni 2025 2026.",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aslmediocampidano.it/ap/determinazione-dirigenziale-n-392-del-07-10-2026/": {
+   "oggetto": "Autorizzazione a contrarre e contestuale affidamento della fornitura di bracciali identificazione mamma-bebè numerati e personalizzati - U.O. Ostetricia e Ginecologia del P.O. CIG: BD4140A6E3",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.asl1sassari.it/ap/deliberazione-del-direttore-generale-n-963-del-07-10-2026/": {
+   "oggetto": "Appalti per forniture di beni, servizi e lavori: pagamento dei contributi dovuti all’ANAC relativi a procedure di gara della ASL di Sassari",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aousassari.it/ap/determina-dirigenziale-del-07-10-2026-n-70/": {
+   "oggetto": "Fornitura di n. 5 congelatori medicali di varie tipologie ed n. 1 abbattitore per plasma per le esigenze della SC Servizio Immunotrasfusionale, terapie delle emoglobine e coagulopatie dell’Azienda Ospedaliera Universitaria di Sassari. Affidamento diretto, ai sensi dell’art. 50, comma 1, lett. b) del Decreto Legislativo 31 marzo 2023, n. 36. CIG: BD33FB09F1.",
+   "dal": "07.10.2026",
+   "al": "21.10.2026",
+   "ver": 2
+  },
+  "https://www.aslmediocampidano.it/ap/determinazione-dirigenziale-n-391-del-07-10-2026/": {
+   "oggetto": "Autorizzazione a contrarre e contestuale affidamento della fornitura di bracciali per l’identificazione del paziente per il Pronto Soccorso del Presidio Ospedaliero Aziendale.- CIG: BD39E61E3E",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.asl1sassari.it/ap/deliberazione-del-direttore-generale-n-962-del-07-10-2026/": {
+   "oggetto": "Convenzione con la ASL n.2 della Gallura per l’erogazione di prestazioni professionali in materia di contabilità generale e bilancio - Liquidazione compensi mesi da maggio a luglio 2026.",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1236-del-07-10-2026/": {
+   "oggetto": "Autorizzazione all’esercizio delle attività assistenziali in regime di prestazione aggiuntiva per il personale sanitario dell’Area Comparto, Tecnici di Laboratorio, in servizio presso la S.S. Laboratorio Analisi del P.O. San Marcellino di Muravera, per il periodo maggio – luglio 2026. Codice Progetto UP-08-2026-PAL213.",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aousassari.it/ap/determina-dirigenziale-del-07-10-2026-n-69/": {
+   "oggetto": "P.N.R.R. MISSIONE 6 – SALUTE - MISURA PNR M6.C2 I1.2 verso un ospedale sicuro e sostenibile – “Interventi di adeguamento sismico del PO Regina Margherita (Ospedale Marino) di Alghero” CUP H12C22000150006 –– CIG Derivato 959247157C Liquidazione spettanze per Direzione Lavori a tutto il SAL 2",
+   "dal": "07.10.2026",
+   "al": "21.10.2026",
+   "ver": 2
+  },
+  "https://www.asl1sassari.it/ap/determinazione-dirigenziale-n-984-del-07-10-2026/": {
+   "oggetto": "Ricovero fuori Regione in Comunità socio-assistenziale per disabili gravi “L’ Abecedario” sita in Canelli (AT) – G.T. Società Coop. Sociale – Proroga utente PUA202600153798",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aslogliastra.it/ap/deliberazione-del-direttore-generale-n-501-del-07-10-2026/": {
+   "oggetto": "Ricorso nanti il Tribunale Civile di Lanusei RG 175/2026 nell’interesse di A.C. - Nomina legale di fiducia Avv. Paolo Pilia, con studio legale in Lanusei.",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1235-del-07-10-2026/": {
+   "oggetto": "Adozione “Progetto Operativo 2026. Abbattimento delle Liste d’Attesa. Personale del SSR - ASL 8 Cagliari”",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.asl1sassari.it/ap/determinazione-dirigenziale-n-983-del-07-10-2026/": {
+   "oggetto": "Rettifica della Determina Dirigenziale N. 967 del 02/10/2026 avente come oggetto:” Autorizzazione a contrarre e contestuale affidamento, ai sensi dell’art. 50, co. 1 lett. b) del D.lgs 36/2023, riguardante la fornitura di siringhe di calibrazione per spirometri, necessari alle esigenze dei Distretti Sanitari di Ozieri, Alghero e Sassari - ASL 1 SASSARI”.",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aousassari.it/ap/determina-dirigenziale-del-07-10-2026-n-68/": {
+   "oggetto": "Autorizzazione allo studio dal titolo “Implementazione di un percorso di ricognizione e riconciliazione farmacologica nel paziente anziano politrattato afferente all'U.O. di Cardiologia: valutazione dell'impatto clinico ed economico” – RIC_CARD2026",
+   "dal": "07.10.2026",
+   "al": "21.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1234-del-07-10-2026/": {
+   "oggetto": "liquidazione rimborso spesa per l’acquisto di una parrucca, assistite afferenti al Distretto di Quartu Parteolla, aventi diritto, ai sensi del DGR n. 4/29 del 06.02.2020 e ss.mm.ii. Finanziamento RAS vincolato. Codice progetto UP–08–2019–218. Anno 2026. N. 7 assistite: P. M. – L. A. M. – D. S. – S. M. G. – V. M.– M. A.– M.V.",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aslogliastra.it/ap/deliberazione-del-direttore-generale-n-500-del-07-10-2026/": {
+   "oggetto": "Approvazione schema e stipula Convenzione tra la ASL n. 4 Ogliastra e ARES Sardegna per acquisire prestazioni di supporto amministrativo per la gestione del patrimonio.",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.asl1sassari.it/ap/determinazione-dirigenziale-n-982-del-07-10-2026/": {
+   "oggetto": "Liquidazione delle prestazioni aggiuntive rese dal personale coinvolto nell’attuazione del Piano aziendale per lo smaltimento delle liste d’attesa, previsto dalla deliberazione del Direttore Generale n° 177 del 27/2/2026 e n. 925 del 24.09.2026 - Luglio - Agosto 2026",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aousassari.it/ap/determina-dirigenziale-del-07-10-2026-n-67/": {
+   "oggetto": "Fornitura triennale di cloro attivo 0,05% magistrale industriale. Affidamento diretto, ai sensi dell’art. 50, comma 1, lett. b) del Decreto legislativo 31 marzo 2023, n. 36.",
+   "dal": "07.10.2026",
+   "al": "21.10.2026",
+   "ver": 2
+  },
+  "https://www.aslgallura.it/ap/deliberazione-del-direttore-generale-n-949-del-07-10-2026/": {
+   "oggetto": "Conferimento dell’incarico di sostituzione di Direzione della SC “Area Affari Generali e Legali e Capitale Umano”, afferente al Dipartimento Area Amministrativa , alla Dott.ssa Tiziana Enne ai sensi dell’art. 73 del vigente CCNL Are a delle Funzioni Locali.",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2678-del-07-10-2026/": {
+   "oggetto": "Modifica al contratto a favore di Asl Sassari ai sensi dell'art. 120 comma 1 lett.b del D.lgs 36/2023 Lotto 5. Procedura aperta sopra soglia europea, di durata biennale con aggiudicazione all'offerta economicamente più vantaggiosa per l'affidamento del servizio di copertura assicurativa per vari rami - all risks patrimonio immobiliare e mobiliare, assicurazione per la responsabilità civile patrimoniale, cumulativa infortuni medici e altre categorie, kasko dipendenti e altre categorie in missione, responsabilità civile derivante dalla circolazione dei veicoli a motore e garanzie accessorie amministrata a libro matricola- per varie aziende del SSR",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aslgallura.it/ap/deliberazione-del-direttore-generale-n-948-del-07-10-2026/": {
+   "oggetto": "Ricognizione degli utilizzi e delle disponibilità residue dei fondi relativi a contributi vincolati degli esercizi 2022-2023-2024 alla data del 30 giugno 2026, in attuazione della nota RAS prot. PG/2026/0037077 del 03/08/2026.",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aslgallura.it/ap/deliberazione-del-direttore-generale-n-947-del-07-10-2026/": {
+   "oggetto": "Affidamento del servizio di supporto operativo per la gestione dei frontoffice e back-office del Centro Unico di Prenotazione (CUP/Ticket) presso i presidi della ASL n. 2 Gallura – nelle more dell’attivazione del nuovo contratto centralizzato da parte della CRC. Trattativa MEPA n. 65997780, CIG: BD23CC2D00",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aslgallura.it/ap/determinazione-dirigenziale-n-232-del-07-10-2026/": {
+   "oggetto": "Liquidazione oneri al Comando Provinciale dei Vigili del Fuoco della Provincia di Sassari per il rinnovo della SCIA, ai sensi dell’art. 4 del D.P.R. 01/08/2011 n. 151, RSA di Tempio Pausania– prat. VVF n°25934",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-938-del-07-10-2026/": {
+   "oggetto": "Sistema di misurazione e valutazione della performance. Individuazione dei componenti del Collegio di Conciliazione. Parziale rettifica Delibera del Direttore Generale n. 341 del 29/6/2023 - Sostituzione Componente.",
+   "dal": "07.10.2026",
+   "al": "22.10.2026",
    "ver": 2
   }
  }
