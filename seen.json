@@ -5993,7 +5993,21 @@
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2682-del-08-10-2026/": "2026-10-08T15:12",
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2681-del-08-10-2026/": "2026-10-08T15:12",
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2680-del-08-10-2026/": "2026-10-08T15:12",
-  "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2679-del-08-10-2026/": "2026-10-08T15:12"
+  "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2679-del-08-10-2026/": "2026-10-08T15:12",
+  "https://www.asl1sassari.it/ap/deliberazione-del-direttore-generale-n-968-del-08-10-2026/": "2026-10-08T20:21",
+  "https://www.aslgallura.it/ap/determinazione-dirigenziale-n-233-del-08-10-2026/": "2026-10-08T20:21",
+  "https://www.asl3nuoro.it/ap/deliberazione-del-direttore-generale-asl-n-3-di-nuoro-n-1129-del-08-10-2026/": "2026-10-08T20:21",
+  "https://www.asl3nuoro.it/ap/deliberazione-del-direttore-generale-asl-n-3-di-nuoro-n-1128-del-08-10-2026/": "2026-10-08T20:21",
+  "https://www.asl3nuoro.it/ap/deliberazione-del-direttore-generale-asl-n-3-di-nuoro-n-1127-del-08-10-2026/": "2026-10-08T20:21",
+  "https://www.aslmediocampidano.it/ap/determinazione-dirigenziale-n-401-del-08-10-2026/": "2026-10-08T20:21",
+  "https://www.aslmediocampidano.it/ap/determinazione-dirigenziale-n-400-del-08-10-2026/": "2026-10-08T20:21",
+  "https://www.areus.sardegna.it/ap/determina-dirigenziale-n-331-del-08-ottobre-2026/": "2026-10-08T20:21",
+  "https://www.areus.sardegna.it/ap/determina-dirigenziale-n-330-del-08-ottobre-2026/": "2026-10-08T20:21",
+  "https://www.areus.sardegna.it/ap/determina-dirigenziale-n-329-del-08-ottobre-2026/": "2026-10-08T20:21",
+  "https://www.areus.sardegna.it/ap/determina-dirigenziale-n-328-del-08-ottobre-2026/": "2026-10-08T20:21",
+  "https://www.areus.sardegna.it/ap/determina-dirigenzile-n-327-del-08-ottobre-2026/": "2026-10-08T20:21",
+  "https://www.areus.sardegna.it/ap/determina-dirigenziale-n-326-del-08-ottobre-2026/": "2026-10-08T20:21",
+  "https://www.aressardegna.it/ap/asl-gallura-conferimento-di-incarichi-a-tempo-determinato-di-assistenza-primaria-ad-attivita-oraria-ai-sensi-dellart-37-dellacn-per-la-medicina-generale-15-01-2026/": "2026-10-08T20:21"
  },
  "aziende_inizializzate": [
   "AOU Sassari",
@@ -41360,6 +41374,90 @@
   },
   "https://www.aslmediocampidano.it/ap/indizione-pubblica-selezione-per-soli-titoli-per-lassunzione-con-contratto-di-lavoro-a-tempo-determinato-di-dirigenti-medici-di-medicina-e-chirurgia-di-accettazione-e-durgenza-m/": {
    "oggetto": "Indizione pubblica selezione, per soli titoli, per l’assunzione, con contratto di lavoro a tempo determinato, di Dirigenti Medici di Medicina e Chirurgia di accettazione e d’Urgenza (Medicina di Emergenza Urgenza), nelle more della copertura dei posti a tempo indeterminato presso la ASL del Medio Campidano.",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.asl1sassari.it/ap/deliberazione-del-direttore-generale-n-968-del-08-10-2026/": {
+   "oggetto": "Piano Nazionale Ripresa e Resilienza (P.N.R.R.) Missione 6 Salute – Lavori di manutenzione straordinaria per la sostituzione di un Gruppo Elettrogeno e del Quadro Elettrico presso il complesso San Giovanni Battista di Ploaghe (SS). Approvazione Progettazione Esecutiva ai sensi dell’art. 42 del D. Lgs. 36/2023. RIF: PNRR-OdC-PLOAG3 CUP: J18I22000190006.",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.areus.sardegna.it/ap/determina-dirigenziale-n-331-del-08-ottobre-2026/": {
+   "oggetto": "Liquidazione della spesa relativa al servizio di trasporto e conferimento ad impianti di smaltimento di rifiuti pericolosi e non pericolosi derivanti da attività sanitarie, eseguito dalla Società Verde Vita s.r.l., come da fattura n° 120/PA del 24/09/2026 riferita al mese di agosto 2026 – LOTTO 2 - CIG: B57A9A60CB",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.aslgallura.it/ap/determinazione-dirigenziale-n-233-del-08-10-2026/": {
+   "oggetto": "Fornitura in regime di service di prodotti necessari e indispensabili per le attività della SC Laboratorio Analisi del Presidio Ospedaliero “Giovanni Paolo II” di Olbia, in via prudenziale, precauzionale e cautelativa per il periodo presunto di n. 24 mesi, con opzione di proroga di ulteriori 12 mesi - Trattativa MEPA n. 6585877 - CIG: BD42C3EFFA",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.areus.sardegna.it/ap/determina-dirigenziale-n-330-del-08-ottobre-2026/": {
+   "oggetto": "Liquidazione della spesa relativa al servizio di trasporto e conferimento ad impianti di smaltimento di rifiuti pericolosi e non pericolosi derivanti da attività sanitarie, eseguito dalla Società Verde Vita s.r.l., come da fattura n° 119/PA del 24/09/2026 riferita al mese di agosto 2026 – LOTTO 1 - CIG: B579F2FDFF",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.aslmediocampidano.it/ap/determinazione-dirigenziale-n-401-del-08-10-2026/": {
+   "oggetto": "Concessione esonero dal lavoro notturno e reperibilità notturna, ai sensi dell’art. 53 comma 3 del D.Lgs. 151/2001. Dipendente matr. XXX074.",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.areus.sardegna.it/ap/determina-dirigenziale-n-329-del-08-ottobre-2026/": {
+   "oggetto": "Liquidazione della spesa relativa al servizio di trasporto e conferimento ad impianti di smaltimento di rifiuti pericolosi e non pericolosi derivanti da attività sanitarie, eseguito dalla Società Verde Vita s.r.l., come da fattura n° 115/PA del 09/09/2026 riferita al mese di luglio 2026 – LOTTO 2 - CIG: B57A9A60CB",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.aslmediocampidano.it/ap/determinazione-dirigenziale-n-400-del-08-10-2026/": {
+   "oggetto": "PNRR_M6.C1_A6_1.1 (Codice Progetto) Piano Nazionale di Ripresa e Resilienza Missione M6 Salute – Investimento M6.C1-1.1 – Implementazione di un nuovo modello organizzativo: Case della Comunità – Liquidazione onorari per la Direzione Lavori e il Coordinamento della Sicurezza in fase di Esecuzione – Poliambulatorio di Sanluri – CUP: D82C21002590003 – CIG AQ: 9326235C94 – CIG DERIVATO: 9698465281",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.areus.sardegna.it/ap/determina-dirigenziale-n-328-del-08-ottobre-2026/": {
+   "oggetto": "Liquidazione della spesa relativa al servizio di trasporto e conferimento ad impianti di smaltimento di rifiuti pericolosi e non pericolosi derivanti da attività sanitarie, eseguito dalla Società Verde Vita s.r.l., come da fattura n° 114/PA del 09/09/2026 riferita al mese di luglio 2026 – LOTTO 1 - CIG: B579F2FDFF",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.asl3nuoro.it/ap/deliberazione-del-direttore-generale-asl-n-3-di-nuoro-n-1129-del-08-10-2026/": {
+   "oggetto": "Proroga comando verso l’ASL n. 1 di Sassari della dott.ssa Donatella Bezzu, dipendente a tempo indeterminato presso la ASL n. 3 di Nuoro, in qualità di Infermiere – Area dei professionisti della salute e funzionari",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.areus.sardegna.it/ap/determina-dirigenzile-n-327-del-08-ottobre-2026/": {
+   "oggetto": "Convenzione quadro, sottoscritta tra Sardegna CAT e la società COOPSERVICE S. COOP.P.A., denominata “Servizio di pulizia e sanificazione a ridotto impatto ambientale e atri servizi per le ASSL di Nuoro, ASSL di Lanusei e AREUS -Lotto 2-” CIG originario: 8017072919 CIG derivato: 959441273F Presa d’atto Certificato di Regolare Esecuzione mese di luglio 2025 del servizio di pulizia e sanificazione a ridotto impatto ambientale e atri servizi eseguito presso la Centrale Operativo NEA116117, di cui alla fattura n° 9129007281 del 30/06/2026.",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.asl3nuoro.it/ap/deliberazione-del-direttore-generale-asl-n-3-di-nuoro-n-1128-del-08-10-2026/": {
+   "oggetto": "Presa d’atto assegnazione delle risorse finanziarie alle Aziende del Servizio sanitario regionale (SSR) per la realizzazione degli interventi connessi alle esigenze emergenti in materia di edilizia sanitaria e ammodernamento tecnologico per il triennio 2025-2027. Rimodulazione, senza integrazioni finanziarie, di alcuni interventi di cui alla deliberazione della Giunta regionale n. 56/7 del 29.10.2025 e n. 40/34 del 29.07.2026",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.areus.sardegna.it/ap/determina-dirigenziale-n-326-del-08-ottobre-2026/": {
+   "oggetto": "Convenzione quadro, sottoscritta tra la Centrale di Committenza della RAS (Sardegna CAT) e l’Istituto di vigilanza SECURITALIA S.P.A., denominata “Servizio di vigilanza Armata, altri servizi e trasporto valori presso gli immobili delle Aziende sanitarie del territorio della Regione autonoma della Sardegna ricadenti nella Prefettura di Cagliari - Lotto 2” CIG Master: A03EAA9CAC CIG derivato: BA144B5974 Liquidazione delle fatture n. 9117006135 del 31/05/2026 e n. 9117007968 del 16/07/2026, nonché presa d'atto dello storno della nota di credito n. 9117008090 del 17/07/2026, emessa a rettifica della fattura n. 9117006135, relative al servizio di vigilanza armata svolto presso la sede AREUS \"ex CIFDA\", sita in Via dell'Acquedotto Romano – 09030 Elmas, per il periodo di riferimento maggio–giugno 2026.",
+   "dal": "08.10.2026",
+   "al": "23.10.2026",
+   "ver": 2
+  },
+  "https://www.aressardegna.it/ap/asl-gallura-conferimento-di-incarichi-a-tempo-determinato-di-assistenza-primaria-ad-attivita-oraria-ai-sensi-dellart-37-dellacn-per-la-medicina-generale-15-01-2026/": {
+   "oggetto": "AVVISO PUBBLICO URGENTE: conferimento di incarichi a tempo determinato per l’attività di Assistenza Primaria ad attività oraria, ai sensi dell’art. 37 del vigente ACN - ASL n. 2 Gallura Distretto di Olbia e Distretto di Tempio - decorrenza 01/11/2026;",
+   "dal": "08.10.2026",
+   "al": "15.10.2026",
+   "ver": 2
+  },
+  "https://www.asl3nuoro.it/ap/deliberazione-del-direttore-generale-asl-n-3-di-nuoro-n-1127-del-08-10-2026/": {
+   "oggetto": "Autorizzazione al trasferimento di n. 1 Operatore Socio Sanitario – Area degli Operatori, ai sensi dell’art. 53, comma 7, del CCNL Comparto Sanità del 02.11.2022",
    "dal": "08.10.2026",
    "al": "23.10.2026",
    "ver": 2
