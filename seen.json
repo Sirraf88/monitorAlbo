@@ -6150,7 +6150,15 @@
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2705-del-12-10-2026/": "2026-10-12T15:26",
   "https://www.aressardegna.it/ap/pubblici-concorsi-unificati-per-titoli-ed-esami-per-la-copertura-a-tempo-indeterminato-di-n-5-posti-d-m-disciplina-di-neurochirurgia-dell-aou-sassari-e-della-asl-nuoro-2713/": "2026-10-12T15:26",
   "https://www.aressardegna.it/ap/pubblici-concorsi-unificati-per-titoli-ed-esami-per-la-copertura-a-tempo-indeterminato-di-n-3-posti-di-d-m-disciplina-di-cardiochirurgia-per-le-esigenze-dell-arnas-brotzu-e-dell-aou-ss-2713/": "2026-10-12T15:26",
-  "https://www.aressardegna.it/ap/asl-oristano-incarico-sostituzione-branca-endocrinologia/": "2026-10-12T15:26"
+  "https://www.aressardegna.it/ap/asl-oristano-incarico-sostituzione-branca-endocrinologia/": "2026-10-12T15:26",
+  "https://www.asl1sassari.it/ap/determinazione-dirigenziale-n-1004-del-12-10-2026/": "2026-10-12T20:21",
+  "https://www.asl1sassari.it/ap/determinazione-dirigenziale-n-1003-del-12-10-2026/": "2026-10-12T20:21",
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1260-del-12-10-2026/": "2026-10-12T20:21",
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1259-del-12-10-2026/": "2026-10-12T20:21",
+  "https://www.asl8cagliari.it/ap/determinazione-dirigenziale-n-371-del-12-10-2026/": "2026-10-12T20:21",
+  "https://www.asl8cagliari.it/ap/selezione-interna-per-il-conferimento-degli-incarichi-di-funzione-organizzativa-di-coordinamento-ex-d-e-ds-riservato-al-personale-dipendente-del-comparto-dellasl-di-cagliari-area-dei-prof/": "2026-10-12T20:21",
+  "https://www.asl8cagliari.it/ap/avviso-pubblico-per-il-conferimento-di-n-1-incarico-di-collaborazione-esterna-in-regime-libero-professionale-nel-profilo-di-terapista-della-neuro-e-psicomotricita-delleta-evolutiva/": "2026-10-12T20:21",
+  "https://www.aressardegna.it/ap/spea-asl-sassari-avviso-di-completamento-orario-e-accentramento-orario-acn-del-05-02-2026-art-20-c-2-e-3/": "2026-10-12T20:21"
  },
  "aziende_inizializzate": [
   "AOU Sassari",
@@ -42461,6 +42469,54 @@
    "oggetto": "PNRR Missione M6 Salute Componente C1, Investimenti 1.1. M6C1-1.1 del Piano Nazionale di Ripresa e Resilienza, cofinanziata dal Piano Nazionale per gli investimenti complementari (PNC) - Lavori di manutenzione straordinaria per la realizzazione della Casa della Comunità sita in Via Santa Croce n° 17 a Sadali - CUP D82C21002610006 - CIG contratto specifico B76B00E8B7. Assunzione impegno di spesa e autorizzazione alla liquidazione dell'acconto per l'incarico professionale relativo alla Direzione dei Lavori e Coordinamento della sicurezza in fase di esecuzione.",
    "dal": "12.10.2026",
    "al": "27.10.2026",
+   "ver": 2
+  },
+  "https://www.asl1sassari.it/ap/determinazione-dirigenziale-n-1004-del-12-10-2026/": {
+   "oggetto": "Rimborso spese per acquisto vaccino contro il veleno da imenotteri, ai sensi della nota Prot. n. 6430 del 07.03.2018 dell’Assessorato Regionale Igiene e Sanità e Assistenza Sociale – Anno contabile 2026",
+   "dal": "12.10.2026",
+   "al": "27.10.2026",
+   "ver": 2
+  },
+  "https://www.asl1sassari.it/ap/determinazione-dirigenziale-n-1003-del-12-10-2026/": {
+   "oggetto": "Deliberazione RAS n. 33/5 del 26.06.2018 “Accordo con la Federfarma Sardegna per la partecipazione delle Farmacie convenzionate al Programma Regionale di screening del carcinoma del colon retto, in attuazione dell’articolo 9, ultimo capoverso, dell’Accordo di cui alla Deliberazione della Giunta Regionale n. 53/27 del 28.11.2017.” – Rimborso alle Farmacie convenzionate dell’ASL di Sassari aderenti al Programma di screening oncologico organizzato per la prevenzione del carcinoma del colon retto. Periodo maggio, giugno, luglio, agosto 2026. Codice Progetto UP-01-2022-18",
+   "dal": "12.10.2026",
+   "al": "27.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1260-del-12-10-2026/": {
+   "oggetto": "Avviso di selezione interna per il conferimento degli incarichi di Funzione Organizzativa di Coordinamento (ex D e DS) riservato al personale dipendente del comparto dell’Asl Cagliari – Area dei professionisti della salute e dei funzionari, ruolo sanitario per il Distretto di Cagliari Area Vasta – Ospedale di Comunità Cagliari Binaghi e Distretto di Cagliari Area Vasta – Ospedale di Comunità Cagliari Marino.",
+   "dal": "12.10.2026",
+   "al": "27.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/deliberazione-del-direttore-generale-n-1259-del-12-10-2026/": {
+   "oggetto": "Indizione procedura comparativa ex art. 7, comma 6, d.lgs. n. 165/2001 per il conferimento di n. 1 incarico di collaborazione esterna in regime libero-professionale nel profilo di Terapista della Neuro e Psicomotricità dell’Età Evolutiva",
+   "dal": "12.10.2026",
+   "al": "27.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/determinazione-dirigenziale-n-371-del-12-10-2026/": {
+   "oggetto": "Riconoscimento comunitario definitivo alla ditta “Le Trecce di Massidda Roberto” per le attività di Deposito frigorifero - CS e Impianto di Riconfezionamento – RW (Attività Generali” sez. 0), attività presso lo stabilimento già riconosciuto con A.N. UE IT X6H8H sito in Loc. Terra e Teula, Comune di Selargius (CA).",
+   "dal": "12.10.2026",
+   "al": "27.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/selezione-interna-per-il-conferimento-degli-incarichi-di-funzione-organizzativa-di-coordinamento-ex-d-e-ds-riservato-al-personale-dipendente-del-comparto-dellasl-di-cagliari-area-dei-prof/": {
+   "oggetto": "Selezione interna per il conferimento degli incarichi di Funzione Organizzativa di Coordinamento (ex D e DS) riservato al personale dipendente del comparto dell’ASL di Cagliari - area dei professionisti della salute e dei funzionari, ruolo sanitario per il Distretto di Cagliari Area Vasta Ospedale di Comunità Cagliari Binaghi, Distretto Cagliari Area Vasta Ospedale di Comunità Cagliari Marino",
+   "dal": "12.10.2026",
+   "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.asl8cagliari.it/ap/avviso-pubblico-per-il-conferimento-di-n-1-incarico-di-collaborazione-esterna-in-regime-libero-professionale-nel-profilo-di-terapista-della-neuro-e-psicomotricita-delleta-evolutiva/": {
+   "oggetto": "Avviso Pubblico per il conferimento di n. 1 incarico di collaborazione esterna in regime libero - professionale nel profilo di terapista della neuro e psicomotricità dell’età evolutiva – area dei professionisti della salute e dei funzionari",
+   "dal": "12.10.2026",
+   "al": "",
+   "ver": 2
+  },
+  "https://www.aressardegna.it/ap/spea-asl-sassari-avviso-di-completamento-orario-e-accentramento-orario-acn-del-05-02-2026-art-20-c-2-e-3/": {
+   "oggetto": "ATTENZIONE MODALITA' DI INVIO DELLA MANIFESTAZIONE DI INTERESSE: GLI SPECIALISTI AMBULATORIALI ASPIRANTI ALL'INCARICO DISPONIBILE, DEVONO COMUNICARE LA PROPRIA DISPONIBILITA' PENA ESCLUSIONE, TRAMITE PROCEDURA INFORMATICA SUL SITO: https://sai-sardegna.iscrizioneconcorsi.it ACCESSO MEDIANTE SPID o CIE. La procedura informatica per la presentazione della manifestazione di interesse sarà attiva a partire dal 13.10.2026 e verrà automaticamente disattivata alle ore 23:59:59 del 22.10.2026. Dopo tale termine non sarà più possibile effettuare la compilazione online del modulo della manifestazione di interesse. Non saranno ammesse alla procedura domande inviate con modalità diversa rispetto a quella prevista dal presente Avviso",
+   "dal": "12.10.2026",
+   "al": "22.10.2026",
    "ver": 2
   }
  }
