@@ -6553,7 +6553,8 @@
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2756-del-16-10-2026/": "2026-10-16T15:30",
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2755-del-16-10-2026/": "2026-10-16T15:30",
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2754-del-16-10-2026/": "2026-10-16T15:30",
-  "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2753-del-16-10-2026/": "2026-10-16T15:30"
+  "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2753-del-16-10-2026/": "2026-10-16T15:30",
+  "https://www.aressardegna.it/ap/deliberazione-del-direttore-generale-n-303-del-16-10-2026/": "2026-10-16T20:30"
  },
  "aziende_inizializzate": [
   "AOU Sassari",
@@ -45282,6 +45283,12 @@
    "oggetto": "Decisione a contrarre ex art. 17, comma 2, del D.Lgs. 36/2023 e contestuale affidamento diretto ai sensi dell’art. 50, comma 1, lett. b), del D.Lgs. 36/2023, della fornitura, mediante attivazione di un noleggio, per un periodo di 12 mesi + opzione di estensione della fornitura per ulteriori 12 mesi, di n. 1 disostruttore bron - chiale Simeox Phisioassist, per paziente afferente al Distretto Socio Sanitario di Ghilarza/Bosa. Operatore Economico: Medicair Centro Srl. Nomina RUP e DEC e adozione impegno di spesa.",
    "dal": "16.10.2026",
    "al": "31.10.2026",
+   "ver": 2
+  },
+  "https://www.aressardegna.it/ap/deliberazione-del-direttore-generale-n-303-del-16-10-2026/": {
+   "oggetto": "Pubblica selezione per il conferimento di un incarico quinquennale, rinnovabile, di Direttore di Struttura Complessa, per la Direzione della S.C. Prevenzione e Promozione della Salute, afferente al Dipartimento di Igiene e Prevenzione Sanitaria della Asl n. 7 del Sulcis Iglesiente - nomina Commissione esaminatrice.",
+   "dal": "",
+   "al": "",
    "ver": 2
   }
  }
