@@ -6623,7 +6623,35 @@
   "https://www.aressardegna.it/ap/selezione-pubblica-finalizzata-alla-formulazione-di-una-graduatoria-da-utilizzare-per-lassunzione-a-tempo-determinato-di-dirigenti-medici-disciplina-medicina-interna-02761/": "2026-10-19T15:34",
   "https://www.aressardegna.it/ap/selezione-pubblica-di-una-graduatoria-da-utilizzare-per-lassunzione-con-contratto-lavoro-a-tempo-determinato-dirigenti-medici-disciplina-malattie-dellapparato-respiratorio-2760-60/": "2026-10-19T15:34",
   "https://www.aressardegna.it/ap/spea-asl-nuoro-avviso-di-completamento-e-accentramento-orario-art-20-c-2-e-c-3-acn-2026/": "2026-10-19T15:34",
-  "https://www.aressardegna.it/ap/asl-medio-campidano-incarico-provvisorio-pls-amb-2-lunamatrona/": "2026-10-19T15:34"
+  "https://www.aressardegna.it/ap/asl-medio-campidano-incarico-provvisorio-pls-amb-2-lunamatrona/": "2026-10-19T15:34",
+  "https://www.asl1sassari.it/ap/deliberazione-del-direttore-generale-n-1000-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.asl1sassari.it/ap/deliberazione-del-direttore-generale-n-999-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.asl1sassari.it/ap/determinazione-dirigenziale-n-1021-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-970-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-969-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-968-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-967-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-966-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-965-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-964-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-963-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-962-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-961-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.arnasbrotzu.it/ap/determinazione-n-1368-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.arnasbrotzu.it/ap/determinazione-n-1367-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1618/": "2026-10-19T20:32",
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1617/": "2026-10-19T20:32",
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1616/": "2026-10-19T20:32",
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1615/": "2026-10-19T20:32",
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1614/": "2026-10-19T20:32",
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1613/": "2026-10-19T20:32",
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1612/": "2026-10-19T20:32",
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1611/": "2026-10-19T20:32",
+  "https://www.aressardegna.it/ap/deliberazione-del-direttore-generale-n-306-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aressardegna.it/ap/deliberazione-del-direttore-generale-n-305-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aressardegna.it/ap/deliberazione-del-direttore-generale-n-304-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2772-del-19-10-2026/": "2026-10-19T20:32",
+  "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2771-del-19-10-2026/": "2026-10-19T20:32"
  },
  "aziende_inizializzate": [
   "AOU Sassari",
@@ -45772,6 +45800,174 @@
    "oggetto": "ASL Medio Campidano - Incarico provvisorio PLS - Amb. 2 - Lunamatrona",
    "dal": "19.10.2026",
    "al": "22.10.2026",
+   "ver": 2
+  },
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1618/": {
+   "oggetto": "Autorizzazione all’uso compassionevole del farmaco Datopotamab Deruxtecan per il paziente F.D. 1993, cod. DATT-59871-01, affetto da carcinoma della mammella lato destro.",
+   "dal": "19.10.2026",
+   "al": "02.11.2026",
+   "ver": 2
+  },
+  "https://www.arnasbrotzu.it/ap/determinazione-n-1368-del-19-10-2026/": {
+   "oggetto": "Affidamento, ai sensi dell’art. 50, comma 1, lett. b), del D. Lgs. n. 36/2023, per la fornitura triennale, eventualmente rinnovabile per ulteriori due anni, di test rapido tossicologico, da destinare alla SSD Emergenza Urgenza Pediatrica dell’ARNAS “G. Brotzu”. Operatore Economico Bio-Rad Laboratories Srl. Importo complessivo triennale € 5.238,00 oltre iva di legge. CIG BD33237BBC",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1617/": {
+   "oggetto": "Adozione documento: “Percorso Diagnostico Terapeutico Assistenziale per il paziente con Ictus Cerebrale Ischemico”.",
+   "dal": "19.10.2026",
+   "al": "02.11.2026",
+   "ver": 2
+  },
+  "https://www.arnasbrotzu.it/ap/determinazione-n-1367-del-19-10-2026/": {
+   "oggetto": "Affidamento, ai sensi dell’art. 50, comma 1, lett. b), del D. Lgs. n. 36/2023, avente ad oggetto la fornitura triennale, eventualmente rinnovabile per ulteriori due anni, di “Test rapidi all’ureasi per ricerca Helicobacter Pylori” da destinare alle S.S.D. Endoscopia Digestiva P.O. San Michele e P.O. Businco dell’ARNAS “G. Brotzu”. Operatore Economico MediCare Solutions S.r.l. Spesa complessiva € 1.428,00 oltre IVA di Legge. CIG: BD2D36A056",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1616/": {
+   "oggetto": "AC] Procedura negoziata senza pubblicazione di un bando, ai sensi dell'art. 76, comma 2, lett. c) del D.Lgs. 36/2023, per l'affidamento della fornitura annuale, in regime di service, di un sistema diagnostico per analisi sierologiche, per esami di routine mediante test CLIA, per le esigenze della S.S. di Microbiologia e Virologia dell'Azienda Ospedaliero Universitaria di Sassari. Autorizzazione a contrarre.",
+   "dal": "19.10.2026",
+   "al": "02.11.2026",
+   "ver": 2
+  },
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1615/": {
+   "oggetto": "Conferimento incarico legale all’Avv. Michele Mannironi per la difesa dell’Azienda Ospedaliero Universitaria nella causa pendente nanti il Tribunale di Sassari, nel procedimento ex art. 696 bis c.p.c. promosso dagli eredi della sig.ra M.B. – R.G. 1526/2026",
+   "dal": "19.10.2026",
+   "al": "02.11.2026",
+   "ver": 2
+  },
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1614/": {
+   "oggetto": "Presa d’atto Linee Guida per la gestione del ciclo passivo dell’Azienda Ospedaliera Universitaria di Sassari",
+   "dal": "19.10.2026",
+   "al": "02.11.2026",
+   "ver": 2
+  },
+  "https://www.aressardegna.it/ap/deliberazione-del-direttore-generale-n-306-del-19-10-2026/": {
+   "oggetto": "Secondo aggiornamento Programma triennale degli acquisti di forniture e servizi 2026/2028 dell'Amministrazione ARES Sardegna - Azienda Regionale della Salute",
+   "dal": "",
+   "al": "",
+   "ver": 2
+  },
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1613/": {
+   "oggetto": "Presa d’atto D.R. 907/2026 del 18.03.2026. Passaggio a regime di tempo definito Prof. Emilio Trignano.",
+   "dal": "19.10.2026",
+   "al": "02.11.2026",
+   "ver": 2
+  },
+  "https://www.asl1sassari.it/ap/deliberazione-del-direttore-generale-n-1000-del-19-10-2026/": {
+   "oggetto": "Presa d’atto della Convenzione sottoscritta tra l'Azienda Socio Sanitaria Locale n. 1 di Sassari e l’Azienda Socio Sanitaria Locale n.8 di Cagliari per l’acquisizione di prestazioni professionali in materia di contabilità e adempimenti fiscali a favore dell’ASL n.8 di Cagliari.",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aressardegna.it/ap/deliberazione-del-direttore-generale-n-305-del-19-10-2026/": {
+   "oggetto": "Pubblica selezione per il conferimento di un incarico quinquennale, rinnovabile, di Direttore di Struttura Complessa, per la Direzione della S.C. Ortopedia e Traumatologia afferente al Dipartimento delle Attività Cliniche Medico Chirurgiche della ASL n. 4 dellOgliastra - nomina commissione esaminatrice.",
+   "dal": "",
+   "al": "",
+   "ver": 2
+  },
+  "https://www.aressardegna.it/ap/deliberazione-del-direttore-generale-n-304-del-19-10-2026/": {
+   "oggetto": "Pubblica selezione per il conferimento di un incarico quinquennale, rinnovabile, di Direttore di Struttura Complessa, per la Direzione della SC Centrale Operativa 118 Sassari, afferente al Dipartimento delle Centrali Operative e della Governance Clinica di AREUS - nomina Commissione esaminatrice.",
+   "dal": "",
+   "al": "",
+   "ver": 2
+  },
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1612/": {
+   "oggetto": "[AC] - Adesione alla “Procedura aperta telematica per l’affidamento in service della fornitura di trattamenti di dialisi extracorporea non compresi in Consip, aghi fistola per emodialisi e cateteri venosi a breve e lungo termine per emodialisi e servizi connessi, per le Aziende Sanitarie del Servizio Sanitario Regionale della Sardegna. Aggiudicazione”, di cui alla Determinazione dirigenziale 281 del 06.02.2026, rettificata con Determinazione dirigenziale n. 404 del 13.02.2026, della ARES Sardegna. CUI F02268260904202300040. Autorizzazione a contrarre.",
+   "dal": "19.10.2026",
+   "al": "02.11.2026",
+   "ver": 2
+  },
+  "https://www.asl1sassari.it/ap/deliberazione-del-direttore-generale-n-999-del-19-10-2026/": {
+   "oggetto": "Convenzione per la gestione delle attività di riscossione dei crediti tra l'Azienda Sanitaria Locale n. 1 Sassari e l’Agenzia delle Entrate-Riscossione – Approvazione schema di convenzione",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2772-del-19-10-2026/": {
+   "oggetto": "Adozione aggiornamento delle Linee di indirizzo per il percorso sicurezza in chirurgia e del rischio ostetrico per la sicurezza nel Percorso nascita - Affidamento servizio stampa e consegna modelli per le Aziende del SSR per un periodo di 1 anno CIG: BD615E748F",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-970-del-19-10-2026/": {
+   "oggetto": "Manifestazione di interesse, per soli titoli, volta alla predisposizione di un elenco di Medici Chirurghi specialisti, specializzandi, in quiescenza o laureati, in possesso dei requisiti per l'esercizio temporaneo della professione sanitaria, che intendono esercitare la professione in base a un titolo conseguito all'estero ai sensi dell'art. 15 del DL 30/03/2023 n. 34, idonei al conferimento di incarichi di lavoro autonomo, ai sensi dell'art. 7, comma 6, del D.lgs. n. 165/2001, da destinare alla S.C. Medicina e Chirurgia di Accettazione e d'Urgenza (MCAU) del P.O. Sirai di Carbonia e PPI del P.O. CTO di Iglesias della Asl Sulcis Iglesiente. Approvazione verbale lavori Commissione Esaminatrice e dei candidati idonei.",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aousassari.it/ap/delibera-del-19-ottobre-n-1611/": {
+   "oggetto": "Convenzione tra l’AOU di Sassari e l’ASL di Oristano per lo svolgimento di attività rinologica chirurgica e supporto tracheotomie complesse da effettuarsi presso il PO San Martino dell’ASL di Oristano.",
+   "dal": "19.10.2026",
+   "al": "02.11.2026",
+   "ver": 2
+  },
+  "https://www.asl1sassari.it/ap/determinazione-dirigenziale-n-1021-del-19-10-2026/": {
+   "oggetto": "Servizi di architettura e ingegneria relativi alla progettazione esecutiva per l’intervento relativo ai lavori di ristrutturazione e adeguamento alle norme dei locali e degli impianti delle sale settorie della medicina legale ubicate nel complesso di Rizzeddu, Sassari - Approvazione certificato di Buona esecuzione dei Servizi di Ingegneria RIF: BE142 - CIG B73E5667F3",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-969-del-19-10-2026/": {
+   "oggetto": "Manifestazione di interesse - per titoli - per il conferimento di incarichi libero professionali a personale medico, specialisti, specializzandi o in quiescenza, nella disciplina di Psichiatria, da destinare alle varie unità operative della Asl Sulcis Iglesiente: Nomina Commissione esaminatrice.",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2771-del-19-10-2026/": {
+   "oggetto": "Asl Sassari - Presa atto conferimento per conto di Asl Sassari di Incarico a Tempo Determinato di Assistenza Primaria a ciclo di scelta - ambito 1.6 - Distretto di Sassari - Comune di Sorso, Dott.ssa Contini Sabrina.",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-968-del-19-10-2026/": {
+   "oggetto": "Ripiano del superamento del tetto di spesa dei dispositivi medici per l'anno 2024. Adempimenti di cui alle note RAS n. 20856 del 06/07/2026 e RAS n 25972 del 26/08/2026 -Rettifica Deliberazione DG n 862 del 10/09/2026",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-967-del-19-10-2026/": {
+   "oggetto": "ISTITUZIONE COMMISSIONE SANZIONI",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-966-del-19-10-2026/": {
+   "oggetto": "Rettifica parziale della Deliberazione n. 869 del 16/09/2026 - Modifica del numero massimo di tirocinanti annui previsti dallo schema di Convenzione con il Centro di Terapia Strategica - Scuola di Specializzazione in Psicoterapia",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-965-del-19-10-2026/": {
+   "oggetto": "Progetto di Assistenza Medica presso l'Isola di San Pietro denominato Sistema operativo per le urgenze - Isola di San Pietro Codice progetto UP-07-2024-27. Approvazione elenco idonei aggiornato.",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-964-del-19-10-2026/": {
+   "oggetto": "APPROVAZIONE PIANO DEI FLUSSI DI CASSA ANNO 2026 AL III TRIMESTRE 2026 AI SENSI ART. 6, co 1 e 2 D.L. n. 155/2024.",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-963-del-19-10-2026/": {
+   "oggetto": "DGR n. 51/41 del 1° ottobre 2025 - Costituzione Commissione aziendale ispettiva per i fornitori di protesi, ortesi e ausili con oneri a carico del Servizio Sanitario Regionale. Branca audio-protesica - Branca optometrista - Branca ortopedica. Rettifica delibera n° 740 del 29/07/2026",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-962-del-19-10-2026/": {
+   "oggetto": "Assunzione a tempo pieno e indeterminato di n. 15 unità nel profilo di Infermiere - Area dei Professionisti della Salute e dei Funzionari.",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
+   "ver": 2
+  },
+  "https://www.aslsulcis.it/ap/deliberazione-del-direttore-generale-n-961-del-19-10-2026/": {
+   "oggetto": "Prestazioni libero-professionali Anno 2026 - Incremento dell'impegno orario settimanale per il pagamento delle prestazioni eseguite da un Dirigente Medico impegnato nelle attività libero-professionali della S.C. Anestesia e Rianimazione del P.O. Sirai di Carbonia e P.O. CTO della Asl Sulcis Iglesiente.",
+   "dal": "19.10.2026",
+   "al": "03.11.2026",
    "ver": 2
   }
  }
