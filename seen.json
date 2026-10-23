@@ -7085,7 +7085,9 @@
   "https://www.aressardegna.it/ap/mobilita-esterna-volontaria-n-1-posto-di-dirigente-veterinario-disciplina-di-igiene-degli-allevamenti-e-delle-produzioni-zootecniche-da-destinare-alla-asl-medio-campidano-2824/": "2026-10-23T19:49",
   "https://www.aressardegna.it/ap/avviso-di-mobilita-esterna-per-la-copertura-di-n-20-posti-nel-profilo-di-infermiere-medicina-penitenziaria-di-uta-della-asl-n-8-di-cagliari-2823/": "2026-10-23T19:49",
   "https://www.aressardegna.it/ap/spea-asl-cagliari-incarico-di-sostituzione-ex-art-36-acn-2026-branca-cardiologia-con-particolari-competenze-in-ecocardiografia/": "2026-10-23T19:49",
-  "https://www.aressardegna.it/ap/asl-gallura-incarico-tempo-determinato-mmg-ambito-2-3/": "2026-10-23T19:49"
+  "https://www.aressardegna.it/ap/asl-gallura-incarico-tempo-determinato-mmg-ambito-2-3/": "2026-10-23T19:49",
+  "https://www.aslgallura.it/ap/pubblica-selezione-per-il-conferimento-di-un-incarico-quinquennale-rinnovabile-di-direttore-di-struttura-complessa-per-la-direzione-della-s-c-pediatria-e-neonatologia-della-asl-n-2-gallura-indet/": "2026-10-23T23:18",
+  "https://www.aressardegna.it/ap/pubblica-selezione-conferimento-incarico-quinquennale-rinnovabile-di-direttore-di-struttura-complessa-per-la-direzione-della-sc-pediatria-e-neonatologia-della-asl-n-2-gallura-0282/": "2026-10-23T23:18"
  },
  "aziende_inizializzate": [
   "AOU Sassari",
@@ -49006,6 +49008,18 @@
    "oggetto": "Pubblicazione Ulteriori informazioni Oggetto Rif LP: Avviso seduta pubblica Procedura Aperta informatizzata per la fornitura di Dispositivi Medici per Aritmologia destinati alla SC Cardiologia – Sala Pacemaker – del P.O. San Michele dell’ARNAS “G. Brotzu”, per la durata di un anno con opzione di rinnovo per un anno. Codici CIG vari. Si comunica che in data 26.10.2026 alle ore 10.00 attraverso la piattaforma: https://www.webex.com/ , si svolgerà la seduta pubblica relativa alla Procedura Aperta informatizzata per la fornitura di Dispositivi Medici per Aritmologia destinati alla SC Cardiologia – Sala Pacemaker – del P.O. San Michele dell’ARNAS “G. Brotzu”, per la durata di un anno con opzione di rinnovo per un anno. Il link per prendere parte, in videoconferenza, alla seduta pubblica è il seguente: https://extra.webex.com/extra/j.php?MTID=mf3c0c3901d581d0a5d32c1f5ff78e7a5",
    "dal": "23.10.2026",
    "al": "26.10.2026",
+   "ver": 2
+  },
+  "https://www.aslgallura.it/ap/pubblica-selezione-per-il-conferimento-di-un-incarico-quinquennale-rinnovabile-di-direttore-di-struttura-complessa-per-la-direzione-della-s-c-pediatria-e-neonatologia-della-asl-n-2-gallura-indet/": {
+   "oggetto": "Pubblica selezione per il conferimento di un incarico quinquennale, rinnovabile, di Direttore di Struttura Complessa, per la Direzione della S.C. Pediatria e Neonatologia della ASL n. 2 Gallura, indetta con Deliberazione ARES n. 282 del 06.10.2026. Si informa che l'estratto del bando è stato pubblicato sulla Gazzetta Ufficiale della Repubblica Italiana - IV serie speciale \"Concorsi ed esami\" n. 82 del 23.10.2026 - scadenza presentazione domande 22.11.2026, prorogato al primo giorno successivo non festivo: 23.11.2026.",
+   "dal": "23.10.2026",
+   "al": "23.11.2026",
+   "ver": 2
+  },
+  "https://www.aressardegna.it/ap/pubblica-selezione-conferimento-incarico-quinquennale-rinnovabile-di-direttore-di-struttura-complessa-per-la-direzione-della-sc-pediatria-e-neonatologia-della-asl-n-2-gallura-0282/": {
+   "oggetto": "Pubblica selezione per il conferimento di un incarico quinquennale, rinnovabile, di Direttore di Struttura Complessa, per la Direzione della S.C. Pediatria e Neonatologia della ASL n. 2 Gallura, pubblicato sulla Gazzetta Ufficiale della Repubblica Italiana - IV serie speciale \"Concorsi ed esami\" n. 82 del 23.10.2026 - scadenza presentazione domande 22.11.2026. Stato In svolgimento Non scaduti Tipologia Selezioni pubbliche per conferimento incarichi a tempo determinato Figura Professionale Area Sanitaria Inquadramento Dirigente Ente di riferimento ASL Gallura",
+   "dal": "23.10.2026",
+   "al": "23.11.2026",
    "ver": 2
   }
  }
