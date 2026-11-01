@@ -7708,7 +7708,8 @@
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2898-del-30-10-2026/": "2026-10-30T19:55",
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2897-del-30-10-2026/": "2026-10-30T19:55",
   "https://www.aressardegna.it/ap/determinazione-dirigenziale-n-2896-del-30-10-2026/": "2026-10-30T19:55",
-  "https://www.aressardegna.it/ap/avviso-di-mobilita-esterna-volontaria-ex-art-30-d-lgs-n-165-2001-in-ambito-regionale-ed-interregionale-profilo-di-coadiutore-amministrativo-asl-sassari-02900/": "2026-10-30T19:55"
+  "https://www.aressardegna.it/ap/avviso-di-mobilita-esterna-volontaria-ex-art-30-d-lgs-n-165-2001-in-ambito-regionale-ed-interregionale-profilo-di-coadiutore-amministrativo-asl-sassari-02900/": "2026-10-30T19:55",
+  "https://www.aslmediocampidano.it/ap/permessi-per-diritto-allo-studio-150-ore-anno-solare-2027-art-62-del-ccnl-2019-2021-per-il-personale-del-comparto/": "2026-11-01T19:40"
  },
  "aziende_inizializzate": [
   "AOU Sassari",
@@ -53367,6 +53368,12 @@
    "oggetto": "Fondo di Sviluppo e Coesione (FSC) 2014 –2020: \"Programma regionale di investi-menti per la messa a norma antincendio –Biennio 2018 -2019\" - “Messa a norma dell’impianto elettrico del Poliambulatorio di Nuoro, ai fini dell’adeguamento alla normativa di prevenzione incendi -Codice Investimento SS_SAN_026 –Adeguamento impianti elevatori e compartimentazione\"- Liquidazione incentivi ai sensi dell’art. 113 comma 3 del Dlgs 50/2016.",
    "dal": "30.10.2026",
    "al": "14.11.2026",
+   "ver": 2
+  },
+  "https://www.aslmediocampidano.it/ap/permessi-per-diritto-allo-studio-150-ore-anno-solare-2027-art-62-del-ccnl-2019-2021-per-il-personale-del-comparto/": {
+   "oggetto": "permessi per diritto allo studio (150 ore) anno solare 2027 - art. 62 del CCNL 2019/2021 per il personale del comparto. Avviso.",
+   "dal": "01.11.2026",
+   "al": "30.11.2026",
    "ver": 2
   }
  }
