@@ -111,9 +111,9 @@ def scarica(url, attendi=None):
         raise TempoScaduto()
     if getattr(_locale, "solo_browser", False):
         return scarica_con_browser(url, attendi)
-    for tentativo in range(3):
+    for tentativo in range(4):
         try:
-            r = session.get(url, timeout=30)
+            r = session.get(url, timeout=45)
             if r.status_code == 404:
                 return None
             if r.status_code in (403, 428):
@@ -123,9 +123,10 @@ def scarica(url, attendi=None):
             time.sleep(PAUSA)
             return BeautifulSoup(r.content, "html.parser")  # charset letto dalla pagina
         except requests.RequestException:
-            if tentativo == 2:
+            # cali momentanei dei siti aziendali: si attende sempre di più prima di riprovare
+            if tentativo == 3 or (SCADENZA[0] and time.time() > SCADENZA[0]):
                 raise
-            time.sleep(5 * (tentativo + 1))
+            time.sleep((5, 20, 60)[tentativo])
 
 
 def normalizza(url):
@@ -453,6 +454,11 @@ def aggiorna_archivio(novita):
             w.writerow({**x, "parole": ", ".join(x["parole"])})
 
 
+def date_da_iso(ts):
+    from datetime import date as _date
+    return _date(int(ts[:4]), int(ts[5:7]), int(ts[8:10]))
+
+
 def data_iso(s):
     m = re.match(r"(\d{2})[./-](\d{2})[./-](\d{4})", s or "")
     return f"{m[3]}-{m[2]}-{m[1]}" if m else ""
@@ -531,6 +537,7 @@ def main():
     inizializzate = set(stato.setdefault("aziende_inizializzate", []))
     data_baseline = stato.setdefault("baseline", {})
     dettagli = stato.setdefault("dettagli", {})   # oggetti letti dalle pagine di dettaglio
+    ultima_lettura = stato.setdefault("ultima_lettura", {})   # per azienda, ultimo aggiornamento riuscito
     nuovo_registro = not REGISTRO_FILE.exists()
     registro = carica_registro()
     momento = adesso()
@@ -573,18 +580,36 @@ def main():
     with ThreadPoolExecutor(max_workers=len(attive)) as pool:
         risultati = list(pool.map(leggi_azienda, attive))
 
+    # Secondo giro per le aziende fallite: i cali dei siti aziendali durano spesso pochi minuti,
+    # e a questo punto gli altri siti hanno finito, quindi il tentativo non rallenta nulla.
+    da_ripetere = [i for i, (_, _, e) in enumerate(risultati) if e is not None]
+    if da_ripetere and not (SCADENZA[0] and time.time() > SCADENZA[0]):
+        log(f"Secondo tentativo per: {', '.join(attive[i]['nome'] for i in da_ripetere)}")
+        time.sleep(CONFIG.get("attesa_secondo_tentativo_secondi", 90))
+        with ThreadPoolExecutor(max_workers=len(da_ripetere)) as pool:
+            for i, esito in zip(da_ripetere, pool.map(leggi_azienda, [attive[i] for i in da_ripetere])):
+                if esito[2] is None:
+                    risultati[i] = esito
+
     for az, (atti, completati, errore) in zip(attive, risultati):
         nome = az["nome"]
         for x in completati:   # oggetto e date recuperati per atti già in archivio
             r = registro[x["url"]]
             r["o"], r["d"], r["f"] = x["oggetto"], r["d"] or x["dal"], r["f"] or x["al"]
         primo_avvio = nome not in inizializzate
-        if errore is not None:
-            errori.append(f"{nome}: {spiega_errore(errore)}")
+        if errore is not None or not atti:
+            motivo = (spiega_errore(errore) if errore is not None
+                      else "nessun atto rilevato — verificare URL o struttura della pagina")
+            prec = ultima_lettura.get(nome)
+            if prec:
+                quando = f"{prec[8:10]}/{prec[5:7]} alle {prec[11:16]}"
+                giorni = (momento.date() - date_da_iso(prec)).days
+                motivo += (f"; ultima lettura riuscita il {quando}" +
+                           (" — se l'avviso dura da giorni, il sito è cambiato o è fuori servizio"
+                            if giorni >= 2 else " (gli atti mostrati sono quelli di allora)"))
+            errori.append(f"{nome}: {motivo}")
             continue
-        if not atti:
-            errori.append(f"{nome}: nessun atto rilevato — verificare URL o struttura della pagina")
-            continue
+        ultima_lettura[nome] = ts
         for x in atti:
             if x["url"] not in visti:
                 visti[x["url"]] = ts          # data e ora della prima rilevazione
@@ -604,6 +629,7 @@ def main():
     stato["visti"] = {u: d for u, d in visti.items() if d >= limite}
     stato["dettagli"] = {u: d for u, d in dettagli.items() if u in stato["visti"]}
     stato["aziende_inizializzate"] = sorted(inizializzate)
+    stato["ultima_lettura"] = ultima_lettura
     STATE_FILE.write_text(json.dumps(stato, ensure_ascii=False, indent=1), encoding="utf-8")
     salva_registro(registro, momento)
     aggiorna_archivio(novita)

@@ -84,5 +84,6 @@
   "max_profondita_sezioni": 3,
   "giorni_conservazione_stato": 120,
   "tempo_massimo_minuti": 80,
-  "max_dettagli_per_esecuzione": 400
+  "max_dettagli_per_esecuzione": 400,
+  "attesa_secondo_tentativo_secondi": 90
 }
