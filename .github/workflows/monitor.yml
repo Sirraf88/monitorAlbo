@@ -2,13 +2,14 @@ name: Monitor albi pretori SSR
 
 on:
   schedule:
-    # Aggiornamenti alle 15:00 e alle 20:00 ora italiana, tutto l'anno.
+    # Aggiornamenti verso le 15:20 e le 20:20 ora italiana, tutto l'anno.
+    # Il minuto 23 evita l'inizio dell'ora, quando la coda di GitHub è più affollata.
     # GitHub ragiona in UTC: si programmano entrambe le varianti (ora legale e ora solare)
     # e il job "controllo" lascia passare solo quella corretta per il periodo dell'anno.
-    - cron: "0 13 * * *"   # 15:00 con ora legale
-    - cron: "0 14 * * *"   # 15:00 con ora solare
-    - cron: "0 18 * * *"   # 20:00 con ora legale
-    - cron: "0 19 * * *"   # 20:00 con ora solare
+    - cron: "23 13 * * *"   # 15:23 con ora legale
+    - cron: "23 14 * * *"   # 15:23 con ora solare
+    - cron: "23 18 * * *"   # 20:23 con ora legale
+    - cron: "23 19 * * *"   # 20:23 con ora solare
   workflow_dispatch:        # avvio manuale dal tab Actions (sempre eseguito)
 
 permissions:
@@ -32,11 +33,11 @@ jobs:
           ESEGUI=true
           if [ "${{ github.event_name }}" = "schedule" ]; then
             case "${{ github.event.schedule }}" in
-              "0 13 * * *"|"0 18 * * *") [ "$OFFSET" = "+0200" ] || ESEGUI=false ;;
-              "0 14 * * *"|"0 19 * * *") [ "$OFFSET" = "+0100" ] || ESEGUI=false ;;
+              "23 13 * * *"|"23 18 * * *") [ "$OFFSET" = "+0200" ] || ESEGUI=false ;;
+              "23 14 * * *"|"23 19 * * *") [ "$OFFSET" = "+0100" ] || ESEGUI=false ;;
             esac
           fi
-          echo "Fuso Europe/Rome: $OFFSET - esecuzione: $ESEGUI"
+          echo "Fuso Europe/Rome: $OFFSET - esecuzione: $ESEGUI - orario reale: $(TZ=Europe/Rome date +%H:%M)"
           echo "esegui=$ESEGUI" >> "$GITHUB_OUTPUT"
 
   monitor:
